@@ -1,0 +1,12 @@
+
+# defaut model
+python3 build_silica_slab.py -type crystalline   -x 10.0 -y 10.0 -z 2.0   -core N2   -surface N5   -bonds -ef 10000 -rcut 0.65   -pbc_bonds xy   -pr 10000   -o silica
+
+# hydrophobized silica surface
+python3 build_silica_slab.py -type crystalline   -x 10.0 -y 10.0 -z 2.0   -core N2   -surface C1   -bonds -ef 10000 -rcut 0.65   -pbc_bonds xy   -pr 10000   -o silica_C1
+
+# surface charge and functionalization
+python3 build_silica_slab.py -type crystalline   -x 10.0 -y 10.0 -z 2.0   -core N2   -surface N5 -top Q4p -qtop +0.5   -bonds -ef 10000 -rcut 0.65   -pbc_bonds xy   -pr 10000  -o silica_NH3_homogeneous
+
+# Partial and heterogeneous surface modification
+python3 build_silica_slab.py -type crystalline   -x 10.0 -y 10.0 -z 2.0   -core N2   -surface N5 -top2 Q4p -qtop2 +1.0 -ftop2 0.30   -bonds -ef 10000 -rcut 0.65   -pbc_bonds xy   -pr 10000   -o silica_NH3_mixed
