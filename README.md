@@ -40,6 +40,7 @@ The emphasis is on **model construction, physical insight, and critical interpre
 
 ---
 
+
 ## [Hands-on Sessions Overview](hands_on/README.md)
 
 The hands-on material is organized into a sequence of tutorials located in the `hands_on/` directory.
