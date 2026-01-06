@@ -40,62 +40,35 @@ The emphasis is on **model construction, physical insight, and critical interpre
 
 ---
 
-## Hands-on Tutorials Overview
+## [Hands-on Sessions Overview](hands_on/README.md)
 
 The hands-on material is organized into a sequence of tutorials located in the `hands_on/` directory.
 
-### Tutorial 1 – Building Solid Surfaces
-- Construction of **silica slabs** using a custom CG builder
-- Exploration of surface parameters:
-  - bead types
-  - surface charges
-  - rigidity and restraints
-- Construction of **graphene surfaces** using Martini 3 models
+### - [Hands-on 01 – Building solid surfaces](hands_on/01_build_slabs/README.md)
 
-### Tutorial 2 – Ionic Liquids in Coarse-Grained Representation
-- Imidazolium-based ionic liquids with different alkyl chain lengths:
-  - C2
-  - C4
-  - C8
-- Assembly of bulk ionic liquid systems
-- Discussion of mapping choices and CG limitations
+### - [Hands-on 02 – Ionic Liquids in Coarse-Grained Representation](hands_on/02_ionic_liquids/README.md)
 
-### Tutorial 3 – Building Solid–Ionic Liquid Interfaces
-- Combining solid slabs with ionic liquids
-- Introduction of vacuum / gas regions
-- Boundary conditions and simulation setup
+### - [Hands-on 03 – Building Solid–Ionic Liquid Interfaces](hands_on/03_build_interface/README.md)
 
-### Tutorial 4 – Running CG Molecular Dynamics
-- Running Martini 3 simulations using:
-  - **GROMACS**
-  - **OpenMM**
-- Differences between CG and all-atom MD simulations
-- Practical considerations (time step, thermostats, restraints)
+### - [Hands-on 04 – Running CG Molecular Dynamics](hands_on/04_run_simulations/README.md)
 
-### Tutorial 5 – Analysis of Interfacial Structure and Dynamics
-- Partial density profiles
-- Radial distribution functions (RDFs)
-- Diffusion coefficients and mean-square displacement (MSD)
-- Surface-induced structural organization
+### - [Hands-on 05 –  Analysis of Interfacial Structure and Dynamics](hands_on/05_analysis/README.md)
 
-### Bonus Tutorial – From Atomistic to CG Potentials
-- Conceptual overview of **iterative Boltzmann inversion (IBI)**
-- Tabulated potentials derived from atomistic reference data
-- Discussion of transferability and limitations
 
 ## Repository Organization
 
 ```
 themosia2026-cg-interfaces/
-├── docs/                 # Course documentation
-├── environment/          # Environment setup (conda, dependencies)
-├── external/             # External codes and submodules
+├── docs/                  # Course documentation
+├── environment/           # Environment setup (conda, dependencies)
+├── external/              # External codes and submodules
 ├── hands_on/
-│   ├── 00_templates/     # Models, scripts, and templates (do not edit)
-│   ├── 01_build_slabs/
-│   ├── 02_build_interface/
-│   ├── 03_run_simulations/
-│   └── 04_analysis/
+│   ├── 00_templates/      # Models, scripts, and templates (do not edit)
+│   ├── 01_build_slabs/    # Building solid surfaces (silica, graphene)
+│   ├── 02_ionic_liquids/  # Bulk ionic liquids (C2, C4, C8)
+│   ├── 03_build_interface/# Solid–ionic liquid interfaces
+│   ├── 04_run_simulations/# Running CG MD (GROMACS / OpenMM)
+│   └── 05_analysis/       # Analysis of interfacial properties
 └── README.md
 ```
 
@@ -114,19 +87,6 @@ Participants are encouraged to consult the following references:
 - Relevant JCTC and interface modeling literature
 
 A detailed list of references is provided in `docs/references.md`.
-
----
-
-## Key Codes and Resources
-
-- **Martini 3 Force Field**
-- **GROMACS**
-- **OpenMM**
-- Martini 3 graphene models
-- OpenMM implementation of Martini
-- Atomistic IL–surface reference workflows
-
-Installation instructions and links are provided in the documentation.
 
 ---
 
