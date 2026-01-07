@@ -82,11 +82,13 @@ The `00_templates/` directory contains reference scripts, models, and templates 
 
 Participants are encouraged to consult the following references:
 
-- Souza et al., *Nature Methods* (2021): Martini 3 force field  
-- Padua et al., *Green Chemistry* (2020): Ionic liquids and interfaces  
-- Relevant JCTC and interface modeling literature
+- Souza, P.C.T. et al. [Martini 3: a general purpose force field for coarse-grained molecular dynamics](https://doi.org/10.1038/s41592-021-01098-3). Nature Methods 18, 382-388 (2021). 
 
-A detailed list of references is provided in `docs/references.md`.
+- Vazquez-Salazar, L.I. et al. [Martini coarse-grained models of imidazolium-based ionic liquids: from nanostructural organization to liquid–liquid extraction](https://doi.org/10.1039/D0GC01823F).  Green Chemistry , 22, 7376-7386 (2020).
+
+- Shrestha, R. et al. [Martini 3 Coarse-Grained Models for Carbon Nanomaterials](https://doi.org/10.1021/acs.jctc.5c00923) J. Chem. Theory Comput. 2025, 21, 18, 9035–9053 (2025).
+
+- Cambiaso, S. et al. [Solid–liquid interfaces in MARTINI 3: Modeling approaches and the case study of silica surfaces in water](https://doi.org/10.1016/j.surfin.2025.106997) 72, 106997 (2025).
 
 ---
 
