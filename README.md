@@ -28,9 +28,8 @@ Topics covered include:
 
 - Fundamental principles of **coarse-graining**
 - Overview and philosophy of the **Martini 3 force field**
-- Modeling **solid surfaces** (silica and graphene) in CG simulations
+- Modeling **solid surfaces** (as silica and graphene) in CG simulations
 - Coarse-grained representations of **imidazolium-based ionic liquids**
-  - C2, C4, and C8 alkyl chain lengths
 - Construction of **solid–ionic liquid interfaces**
 - Running CG molecular dynamics simulations
 - Analysis of **interfacial structure and dynamics**
@@ -47,13 +46,11 @@ The hands-on material is organized into a sequence of tutorials located in the `
 
 ### - Hands-on 01 – Building solid surfaces
 
-### - Hands-on 02 – Ionic Liquids in Coarse-Grained Representation
+### - Hands-on 02 – Building Solid–Ionic Liquid Interfaces
 
-### - Hands-on 03 – Building Solid–Ionic Liquid Interfaces
+### - Hands-on 03 – Running CG Molecular Dynamics
 
-### - Hands-on 04 – Running CG Molecular Dynamics
-
-### - Hands-on 05 –  Analysis of Interfacial Structure and Dynamics
+### - Hands-on 04 –  Analysis of Interfacial Structure and Dynamics
 
 ## Repository Organization
 
@@ -63,18 +60,17 @@ themosia2026-cg-interfaces/
 ├── environment/           # Environment setup (conda, dependencies)
 ├── external/              # External codes and submodules
 ├── hands_on/
-│   ├── 00_templates/      # Models, scripts, and templates (do not edit)
-│   ├── 01_build_slabs/    # Building solid surfaces (silica, graphene)
-│   ├── 02_ionic_liquids/  # Bulk ionic liquids (C2, C4, C8)
-│   ├── 03_build_interface/# Solid–ionic liquid interfaces
-│   ├── 04_run_simulations/# Running CG MD (GROMACS / OpenMM)
-│   └── 05_analysis/       # Analysis of interfacial properties
+│   ├── 00_templates/      # Models, scripts, and template
+│   ├── 01_build_slabs/    # Building solid surfaces 
+│   ├── 02_build_interface/# Solid–ionic liquid interfaces
+│   ├── 03_run_simulations/# Running CG MD (GROMACS / OpenMM)
+│   └── 04_analysis/       # Analysis of interfacial properties
 └── README.md
 ```
 
 Participants are expected to **build their own systems** during the tutorials.
 
-The `00_templates/` directory contains reference scripts, models, and templates that should be **copied or linked**, not modified directly.
+The `00_templates/` directory contains reference scripts and models that should be **copied or linked**, not modified directly.
 
 ---
 
@@ -84,6 +80,8 @@ Participants are encouraged to consult the following references:
 
 - Souza, P.C.T. et al. [Martini 3: a general purpose force field for coarse-grained molecular dynamics](https://doi.org/10.1038/s41592-021-01098-3). Nature Methods 18, 382-388 (2021). 
 
+- Marrink, et al. [Two decades of Martini: Better beads, broader scope](https://doi.org/10.1002/wcms.1620) WIREs Computational Molecular Science, 13(1):e1620.(2023).
+
 - Vazquez-Salazar, L.I. et al. [Martini coarse-grained models of imidazolium-based ionic liquids: from nanostructural organization to liquid–liquid extraction](https://doi.org/10.1039/D0GC01823F).  Green Chemistry , 22, 7376-7386 (2020).
 
 - Shrestha, R. et al. [Martini 3 Coarse-Grained Models for Carbon Nanomaterials](https://doi.org/10.1021/acs.jctc.5c00923) J. Chem. Theory Comput. 2025, 21, 18, 9035–9053 (2025).
@@ -91,6 +89,7 @@ Participants are encouraged to consult the following references:
 - Cambiaso, S. et al. [Solid–liquid interfaces in MARTINI 3: Modeling approaches and the case study of silica surfaces in water](https://doi.org/10.1016/j.surfin.2025.106997) 72, 106997 (2025).
 
 ---
+
 
 ## Notes for Participants
 
