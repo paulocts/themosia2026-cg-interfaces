@@ -71,7 +71,7 @@ The slab model used in this tutorial has the following features:
 
 ### 3.2 Generating the slab using the builder script
 
-In this hands-on, we generate a **reference silica slab** that closely follows the original model used in the literature. Copy  build_silica_slab.py from 00_templates/. You can first run
+In this hands-on, we generate a **reference silica slab** that closely follows the original model used in the literature. Copy build_silica_slab.py from 00_templates/. You can first run
 
 ```bash
 python3 build_silica_slab.py -h
@@ -223,3 +223,73 @@ They should be chosen based on:
 The silica models presented here are best viewed as **toy models**: they sacrifice chemical detail in favor of simplicity, transparency, and tunability.
 
 The strength of the CG approach lies in its ability to **identify qualitative trends**, not to reproduce atomic-scale structure.
+
+## 5. A note on graphite surfaces (based on the Martini 3 graphene model)
+
+In addition to silica, we will also use **graphitic surfaces** as an alternative solid substrate. In this course, graphite is modeled using the **Martini 3 graphene model**, which represents an infinite, periodic graphene sheet and can be used as an effective model for graphitic surfaces.
+
+The graphene model employed here follows the Martini 3 parametrization developed by [Shrestha et al. (2025)](https://doi.org/10.1016/j.surfin.2025.106997), which can reproduces resonable well some structural, elastic, and adsorption trends of graphene within the Martini framework. The model uses a hexagonal lattice of tiny (T) beads and is designed to be used as a **rigid, periodic surface**, making it well suited for interfacial simulations. The model has well-defined mapping rules and should even be able to reproduce overall packing of graphite and even stacking distances.
+
+In contrast to silica, **no parameter exploration is performed for graphite** in this course. The goal is simply to generate a surface of comparable lateral size to the silica slab, which can then be used in solid–ionic liquid interface simulations.
+
+---
+
+### 5.1 Building a periodic graphene sheet
+
+Periodic graphene sheets are generated using `martini3-graphene-periodic.py` (available at  
+https://github.com/MoMS-MMSB/Martini3-Graphene). A copy of the script is also provided in `00_templates/`.
+
+A typical command to generate a periodic graphene sheet is:
+
+```bash
+python3 martini3-graphene-periodic.py \
+  -x 10 \
+  -y 10 \
+  -o graphene
+```
+
+After generation, inspect the box dimensions written in the last line of the generated `.gro` file:
+
+```bash
+tail -n 1 graphene.gro
+```
+
+The reported *x* and *y* values will be reused when redefining the box height.
+
+---
+
+### 5.2 Defining the interlayer spacing
+
+The graphene builder ensures correct lateral periodicity (*x* and *y*), but the box height (*z*) must be defined manually before stacking layers.
+
+In the Martini 3 graphene model, carbon atoms are represented by **Tiny beads** with a Lennard–Jones size parameter of approximately  
+\(\sigma \approx 0.34\) nm. For a standard Lennard–Jones 12–6 potential, the minimum of the interaction potential occurs at:
+
+\[
+r_\text{min} = 2^{1/6}\sigma \approx 0.382\ \text{nm}
+\]
+
+We use this value as an effective **interlayer spacing** when constructing a graphitic slab.
+
+Redefine the box height using the *x* and *y* values obtained from `tail -n 1`:
+
+```bash
+gmx editconf -f graphene.gro -box X Y 0.382 -o graphene_1layer.gro
+```
+
+where `X` and `Y` are taken directly from the last line of `graphene.gro`.
+
+---
+
+### 5.3 Stacking graphene layers to obtain graphite
+
+A graphitic slab is constructed by stacking multiple graphene layers along the *z* direction. In this course, we use **five layers**, which is sufficient to represent a graphite substrate at the coarse-grained level.
+
+```bash
+gmx genconf -f graphene_1layer.gro -o graphite.gro -nbox 1 1 5
+```
+
+This produces a five-layer graphite slab with a total thickness of  
+\(5 \times 0.382 \approx 1.9\) nm.
+
+

@@ -10,3 +10,9 @@ python3 build_silica_slab.py -type crystalline   -x 10.0 -y 10.0 -z 2.0   -core 
 
 # Partial and heterogeneous surface modification
 python3 build_silica_slab.py -type crystalline   -x 10.0 -y 10.0 -z 2.0   -core N2   -surface N5 -top2 Q4p -qtop2 +1.0 -ftop2 0.30   -bonds -ef 10000 -rcut 0.65   -pbc_bonds xy   -pr 10000   -o silica_NH3_mixed
+
+# Graphite
+
+python3 martini3-graphene-periodic.py -x 10 -y 10 -o graphene
+gmx editconf -f graphene.gro -box 9.97395 10.18080 0.382 -o graphene_1layer.gro
+gmx genconf -f graphene_1layer.gro -o graphite.gro -nbox 1 1 5
