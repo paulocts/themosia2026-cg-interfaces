@@ -152,17 +152,19 @@ This represents a hydrophobic surface and is expected to reduce wetting and inte
 
 ### 4.2 Bead spacing and surface density
 
-Bead spacing controls the **effective surface density and roughness** seen by the liquid.
+Bead spacing controls the **effective surface density and roughness** experienced by the liquid at the interface.
 
-The default spacing is chosen to roughly reflect typical Si–Si distances in crystalline silica.  
-You can compare this with the crystal structures used in the atomistic MD hands-on from the previous day.
+By default, the bead spacing used in the silica slab builder corresponds to the values employed by Cambiaso et al. (2025), which were shown to reproduce macroscopic interfacial properties such as wetting behavior.
 
-Changing the spacing allows you to explore different regimes:
+An alternative modeling choice is to construct a surface whose bead spacing reflects typical **Si–Si distances** in crystalline silica. This can be compared directly with the crystal structures used in the atomistic MD hands-on from the previous day. A representative estimate for this spacing is approximately **0.292 nm**.
 
-- smaller spacing → higher surface density, stronger confinement  
-- larger spacing → lower surface density, smoother effective surface  
+The bead spacing can be modified using the `-a` flag in the slab builder:
 
-Increasing the spacing can also be interpreted as a coarse-grained representation of a more amorphous or partially dehydroxylated surface.
+```bash
+-a 0.292
+```
+
+When reducing the bead spacing, it is recommended to also adjust the bonding cutoff to avoid creating an excessively connected network. For example, the cutoff distance can be reduced to -rcut 0.53
 
 ---
 
