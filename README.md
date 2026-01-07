@@ -45,16 +45,15 @@ The emphasis is on **model construction, physical insight, and critical interpre
 
 The hands-on material is organized into a sequence of tutorials located in the `hands_on/` directory.
 
-### - [Hands-on 01 – Building solid surfaces](hands_on/01_build_slabs/README.md)
+### - [Hands-on 01 – Building solid surfaces]
 
-### - [Hands-on 02 – Ionic Liquids in Coarse-Grained Representation](hands_on/02_ionic_liquids/README.md)
+### - [Hands-on 02 – Ionic Liquids in Coarse-Grained Representation]
 
-### - [Hands-on 03 – Building Solid–Ionic Liquid Interfaces](hands_on/03_build_interface/README.md)
+### - [Hands-on 03 – Building Solid–Ionic Liquid Interfaces]
 
-### - [Hands-on 04 – Running CG Molecular Dynamics](hands_on/04_run_simulations/README.md)
+### - [Hands-on 04 – Running CG Molecular Dynamics]
 
-### - [Hands-on 05 –  Analysis of Interfacial Structure and Dynamics](hands_on/05_analysis/README.md)
-
+### - [Hands-on 05 –  Analysis of Interfacial Structure and Dynamics]
 
 ## Repository Organization
 
