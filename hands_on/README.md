@@ -1,6 +1,6 @@
 # Hands-on Sessions Overview
 
-## [-Hands-on 01 – Building solid surfaces](01_build_slabs/README.md)
+## [-Hands-on 01 – Building solid surfaces](01_build_slabs/)
 - Construction of Martini3 models of **silica slabs** using a custom CG builder
 - Exploration of surface parameters:
   - bead types
@@ -8,13 +8,13 @@
   - charge
 - Construction of **graphene surfaces** using Martini 3 models
 
-## [-Hands-on 02 – Building Solid–Ionic Liquid Interfaces](02_build_interface/README.md)
+## [-Hands-on 02 – Building Solid–Ionic Liquid Interfaces](02_build_interface/)
 - Imidazolium-based ionic liquids with different alkyl chain lengths.
 - Combining solid slabs with ionic liquids
 - Introduction of vacuum / gas regions
 - Boundary conditions and simulation setup
 
-## [-Hands-on 03 – Running CG Molecular Dynamics](03_run_md_and_analysis/README.md)
+## [-Hands-on 03 – Running CG Molecular Dynamics](03_run_md_and_analysis/)
 - Running Martini 3 simulations using:
   - **GROMACS**
   - **OpenMM**
