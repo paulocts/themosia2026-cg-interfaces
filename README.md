@@ -1,5 +1,5 @@
 # THEMOSIA Winter School 2026  
-## Coarse-Grained Modeling of Solid–Ionic Liquid Interfaces with Martini 3
+## Coarse-Grained Modeling of Solid–Ionic Liquid Interfaces
 
 This repository contains the **hands-on course material** for the **THEMOSIA Winter School 2026**, focused on coarse-grained (CG) molecular modeling of **solid–ionic liquid interfaces** using the **Martini 3 force field**.
 
@@ -10,7 +10,7 @@ The course combines **lectures** and **hands-on tutorials**, guiding participant
 ## Course Information
 
 - **Event:** THEMOSIA Winter School 2026
-- **Location:** ENS de Lyon (Monod site), Lyon, France
+- **Location:** room M7.1H04 in CBPsmn at ENS de Lyon (Monod site), Lyon, France
 - **Dates:** January 19–23, 2026
   
 - **Coarse-grained Module:** January 22–23, 2026
@@ -44,27 +44,27 @@ The emphasis is on **model construction, physical insight, and critical interpre
 
 The hands-on material is organized into a sequence of tutorials located in the `hands_on/` directory.
 
-### - Hands-on 01 – Building solid surfaces
+### - Hands-on 01 – Building Solid surfaces
 
 ### - Hands-on 02 – Building Solid–Ionic Liquid Interfaces
 
-### - Hands-on 03 – Running CG Molecular Dynamics
-
-### - Hands-on 04 –  Analysis of Interfacial Structure and Dynamics
+### - Hands-on 03 – Running CG Molecular Dynamics and Analysis 
 
 ## Repository Organization
 
 ```
 themosia2026-cg-interfaces/
-├── docs/                  # Course documentation
-├── environment/           # Environment setup (conda, dependencies)
-├── external/              # External codes and submodules
+│ 
+├── docs/               
+│   ├── lectures/               # Course documentation
+│   └── papers/                 # Paper to be consulted during the school
+│ 
 ├── hands_on/
-│   ├── 00_templates/      # Models, scripts, and template
-│   ├── 01_build_slabs/    # Building solid surfaces 
-│   ├── 02_build_interface/# Solid–ionic liquid interfaces
-│   ├── 03_run_simulations/# Running CG MD (GROMACS / OpenMM)
-│   └── 04_analysis/       # Analysis of interfacial properties
+│   ├── 00_templates/           # Models, scripts, and template
+│   ├── 01_build_slabs/         # Building solid surfaces 
+│   ├── 02_build_interface/     # Solid–ionic liquid interfaces
+│   └── 03_run_MD_and_analysis/ # Running CG MD (GROMACS / OpenMM)
+│ 
 └── README.md
 ```
 
@@ -95,7 +95,7 @@ Participants are encouraged to consult the following references:
 
 - These materials are intended **for educational purposes**
 - Coarse-grained models have **known limitations**
-- Results should be interpreted with care
+- Results should be interpreted with care.
 - If you use these workflows or models in research, please **cite the original authors and force-field developers**
 
 ---
