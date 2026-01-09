@@ -236,7 +236,7 @@ The graphene model employed here follows the Martini 3 parametrization developed
   <img src="figures/graphene_AA_CG_model.png" width="750">
 </p>
 
-<em>Figure 2: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.
+<em>**Figure 3**: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.
 
 In contrast to silica, **no parameter exploration is consider for graphite** in this course. The goal is simply to generate a surface of comparable lateral size to the silica slab, which can then be used in solid–ionic liquid interface simulations.
 
