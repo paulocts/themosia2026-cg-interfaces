@@ -233,7 +233,7 @@ In addition to silica, we will also use **graphitic surfaces** as an alternative
 The graphene model employed here follows the Martini 3 parametrization developed by [Shrestha et al. (2025)](https://doi.org/10.1016/j.surfin.2025.106997), which can reproduces resonable well some structural, elastic, and adsorption trends of graphene within the Martini framework. The model uses a hexagonal lattice of tiny (T) beads and is designed to be used as a **rigid, periodic surface**, making it well suited for interfacial simulations. The model has well-defined mapping rules and should even be able to reproduce overall packing of graphite and even stacking distances.
 
 <p align="center">
-  <img src="figures/graphene_AA_CG_model" width="750">
+  <img src="figures/graphene_AA_CG_model.png" width="750">
 </p>
 
 <em>Figure 2: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.
