@@ -105,7 +105,7 @@ python3 build_silica_slab.py \
   <img src="figures/graphene_AA_CG_model.png" width="750">
 </p>
 
-<em>**Figure 1**: Bead options in Martini 3.
+<em>**Figure 1**: Bead options in Martini 3.<em>
 
 - `-bonds -ef 10000 -rcut 0.65`  
   Create a stiff bonded network between neighboring beads (within 6.5 Å), ensuring that the slab behaves as a solid. In principle, the force constant could be tuned to reproduce specific mechanical properties of the material. Here, however, it is used simply to keep the surface reasonably rigid and numerically stable under the chosen simulation conditions
