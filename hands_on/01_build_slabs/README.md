@@ -2,7 +2,7 @@
 
 ## 1. Objective
 
-In this hands-on session you will build a **Martini 3 coarse-grained (CG) silica slab** that will later be used to assemble **solid–ionic liquid interfaces**. The material is based on the work of  [Cambiaso et al 2025](https://doi.org/10.1016/j.surfin.2025.106997).
+In this hands-on session you will build a **Martini 3 coarse-grained (CG) silica slab** that will later be used to assemble **solid–ionic liquid interfaces**. The material is based on the work of  [Cambiaso et al Surf. Interfaces. (2025)](https://doi.org/10.1016/j.surfin.2025.106997).
 
 By the end of this hands-on you should be able to:
 
@@ -24,7 +24,7 @@ In this framework, the CG silica slab is not constructed by mapping every silico
 
 When building the CG silica slabs, we can consider two possible simulation box geometries: **orthorhombic** and **hexagonal (triclinic)**. These choices correspond to different modeling intentions. Hexagonal (triclinic) boxes are the natural choice if one aims to represent a true crystalline α-quartz surface. Such a geometry would be appropriate if the goal were to model a specific quartz crystal face with atomistic fidelity. Orthorhombic boxes, on the other hand, are primarily a **computational convenience**. A triangular lattice can be embedded in an orthorhombic supercell without altering the local bead arrangement or surface bead density. In this case, the box shape does not represent a real crystal symmetry; it simply provides a rectangular container for the coarse-grained surface.
 
-In this context, the term *crystalline* refers to the **local bead arrangement and bead density** used to construct the slab, and **not** to long-range crystallographic symmetry as in atomistic models. Indeed, Cambiaso et al. (2025) used orthorhombic boxes regardless of whether the surface was described as crystalline or amorphous. The focus of that work — and of the present hands-on — is on reproducing macroscopic interfacial properties through the correct surface bead density, rather than on preserving crystallographic symmetry or atom-to-bead mapping.
+In this context, the term *crystalline* refers to the **local bead arrangement and bead density** used to construct the slab, and **not** to long-range crystallographic symmetry as in atomistic models. Indeed, Cambiaso et al. Surf. Interfaces. (2025) used orthorhombic boxes regardless of whether the surface was described as crystalline or amorphous. The focus of that work — and of the present hands-on — is on reproducing macroscopic interfacial properties through the correct surface bead density, rather than on preserving crystallographic symmetry or atom-to-bead mapping.
 
 This means that several choices are **part of the model definition**, not “details”:
 
@@ -74,7 +74,7 @@ The slab model used in this tutorial has the following features:
 
 ### 3.2 Generating the slab using the builder script
 
-In this hands-on, we generate a **reference silica slab** that closely follows the original model used in Cambiaso et al 2025. Copy build_silica_slab.py from 00_templates/. You can first run
+In this hands-on, we generate a **reference silica slab** that closely follows the original model used in Cambiaso et al Surf. Interfaces. (2025). Copy build_silica_slab.py from 00_templates/. You can first run
 
 ```bash
 python3 build_silica_slab.py -h
@@ -99,7 +99,7 @@ python3 build_silica_slab.py \
   Gives the dimensions of the box in nm. Considering a 10 × 10 × 2 nm silica slab, this setup produces 2520 beads distributed over 5 planes. If one loosely associates each bead with a silicon-centered unit, this corresponds to roughly 7560 non-hydrogen atoms, i.e. an effective mapping of about three non-hydrogen atoms per bead (roughly SiO₂). However, this correspondence should not be interpreted as a strict atom-to-bead mapping: in this model, beads represent effective interaction sites chosen to reproduce macroscopic interfacial behavior, rather than chemically explicit Si and O atoms.
 
 - `-core N2` / `-surface N5`  
-  Assign different Martini bead types to the slab interior and the surface to represent effective surface chemistry. In the Martini model, bead types encode effective polarity and solvent affinity, rather than explicit chemical groups. Martini 3 organizes beads into broad chemical classes, such as C (apolar), N (intermediately polar), and P (polar), spanning a continuous range of interaction strengths. For silica surfaces, N5 beads can be used to represent highly hydrophilic environments, corresponding to surfaces rich in hydroxyl (–OH) groups at the atomistic level, while N2 beads represent less polar, more weakly interacting silica environments and are therefore considered a reasonable choice for the slab core.
+  Assign different Martini bead types to the slab interior and the surface to represent effective surface chemistry. In the Martini model, bead types encode effective polarity and solvent affinity, rather than explicit chemical groups. Martini 3 organizes beads into broad chemical classes, such as C (apolar), N (intermediately polar), and P (polar), spanning a continuous range of interaction strengths More details are avaiable here [Marrink, et al. WIREs Comput Mol Sci (2023)](https://doi.org/10.1002/wcms.1620). For silica surfaces, N5 beads can be used to represent highly hydrophilic environments, corresponding to surfaces rich in hydroxyl (–OH) groups at the atomistic level, while N2 beads represent less polar, more weakly interacting silica environments and are therefore considered a reasonable choice for the slab core.
 
   <p align="center">
   <img src="figures/graphene_AA_CG_model.png" width="750">
@@ -153,13 +153,13 @@ A first and intuitive modification is to change the **surface bead type**, which
 
 #### Example: hydrophobized silica surface
 
-Experimentally, silica surfaces are often hydrophobized by trimethylsilylation, replacing surface silanol groups with –Si(CH₃)₃ moieties. By inspecting the Supporting Information of the Martini 3 paper ((Souza et al., Nat. Methods 2025)[https://doi.org/10.1038/s41592-021-01098-3]; in particular Supplementary Table 24), one can consider that, at the coarse-grained level, this modification can be mimicked by assigning a **nonpolar C bead type* to the surface, such as C2. This can be achieved by adding the corresponding flag to the builder:
+Experimentally, silica surfaces are often hydrophobized by trimethylsilylation, replacing surface silanol groups with –Si(CH₃)₃ moieties. By inspecting the Supporting Information of the Martini 3 paper ([Souza et al., Nat. Methods (2025)](https://doi.org/10.1038/s41592-021-01098-3); in particular Supplementary Table 24), one can consider that, at the coarse-grained level, this modification can be mimicked by assigning a **nonpolar C bead type* to the surface, such as C2. This can be achieved by adding the corresponding flag to the builder:
 
 ```bash
 -surface C2
 ```
 
-This represents a hydrophobic surface and is expected to reduce wetting and interfacial layering.
+This represents a hydrophobic surface and is expected to impact the interactions with the ionic liquids.
 
 ---
 
@@ -167,7 +167,7 @@ This represents a hydrophobic surface and is expected to reduce wetting and inte
 
 Bead spacing controls the **effective surface density and roughness** experienced by the liquid at the interface.
 
-By default, the bead spacing used in the silica slab builder corresponds to the values employed by Cambiaso et al. (2025), which were shown to reproduce macroscopic interfacial properties such as wetting behavior.
+By default, the bead spacing used in the silica slab builder corresponds to the values employed by Cambiaso et al. Surf. Interfaces. (2025), which were shown to reproduce macroscopic interfacial properties such as wetting behavior.
 
 An alternative modeling choice is to construct a surface whose bead spacing reflects typical **Si–Si distances** in crystalline silica. This can be compared directly with the crystal structures used in the atomistic MD hands-on from the previous day. A representative estimate for this spacing is approximately **0.292 nm**.
 
@@ -178,6 +178,8 @@ The bead spacing can be modified using the `-a` flag in the slab builder:
 ```
 
 When reducing the bead spacing, it is recommended to also adjust the bonding cutoff to avoid creating an excessively connected network. For example, the cutoff distance can be reduced to -rcut 0.53
+
+From a coarse-graining perspective, changing the bead spacing can also be related to changing the effective mapping resolution of the surface. In Martini 3, different bead sizes (tiny, small, regular) are associated with different levels of resolution, roughly corresponding to 2-to-1, 3-to-1, and 4-to-1 mappings, respectively. For silica, a 3-to-1–like resolution could alternatively be explored by using small neutral beads, for example via -core SN2 and -surface SN5. While this choice may yield more accurate solvent–surface distances, for the phenomenological approach adopted here for silica it is not expected to lead to a substantial gain in accuracy, and would mainly increase the computational cost.
 
 ---
 
@@ -195,7 +197,7 @@ To represent roughly **50% protonation**, use:
 -top N4dq -qtop +0.5
 ```
 
-This creates a **partially charged surface**, sufficient to induce electrostatic ordering of the ionic liquid without assuming full protonation.
+This creates a **partially charged surface**, , sufficient to induce electrostatic ordering of the ionic liquid without assuming full protonation. Here, the "q" label is part of the Martini 3 model definition and modifies the bead interactions accordingly, rather than serving as a purely descriptive tag.
 
 ---
 
@@ -217,12 +219,18 @@ If the fraction is not specified, the code defaults to an **equal (50/50) distri
 -top2 Q4p -qtop2 +1.0 -ftop2 0.30
 ```
 
-This produces a surface where 30% of top-layer beads are randomly functionalized, while the remainder retain the original surface chemistry.
+This produces a surface where 30% of top-layer beads are randomly functionalized, while the remainder retain the original surface chemistry. Here, Q-type beads are used to represent monovalent charged groups or ions in Martini 3, providing a coarse-grained way to introduce localized, fully charged surface sites.
 
 This option is useful for exploring:
 - heterogeneous functionalization
 - imperfect or patchy surface treatments
 - sensitivity of interfacial structure to surface disorder
+
+<p align="center">
+  <img src="figures/graphene_AA_CG_model.png" width="750">
+</p>
+
+<em>**Figure 3**: Representation of all 4 silica slab models discussed in this hands-on.</em>
 
 ---
 
@@ -237,19 +245,19 @@ They should be chosen based on:
 
 The silica models presented here are best viewed as **toy models**: they sacrifice chemical detail in favor of simplicity, transparency, and tunability.
 
-The strength of the CG approach lies in its ability to **identify qualitative trends**, not to reproduce atomic-scale structure.
+The strength of the CG approach lies in its ability to **identify qualitative trends**, not to reproduce atomic-scale structure. In particular, they are mesoscopic surface models, designed to reproduce interfacial behavior rather than to preserve a direct atom-to-bead mapping or crystallographic fidelity.
 
 ## 5. A note on graphite surfaces (based on the Martini 3 graphene model)
 
-In addition to silica, we will also use **graphitic surfaces** as an alternative solid substrate. In this course, graphite is modeled using the **Martini 3 graphene model**, which represents an infinite, periodic graphene sheet and can be used as an effective model for graphitic surfaces.
+In addition to silica, we will also use **graphitic surfaces** as an alternative solid substrate. In this course, graphite is modeled using the **Martini 3 graphene model**, which represents an infinite, periodic graphene sheet and can be used as an effective model for graphitic surfaces. In contrast to the silica slabs discussed above, the graphene model is explicitly structure-driven and based on a well-defined atomistic-to-coarse-grained mapping.
 
-The graphene model employed here follows the Martini 3 parametrization developed by [Shrestha et al. (2025)](https://doi.org/10.1016/j.surfin.2025.106997), which can reproduces resonable well some structural, elastic, and adsorption trends of graphene within the Martini framework. The model uses a hexagonal lattice of tiny (T) beads and is designed to be used as a **rigid, periodic surface**, making it well suited for interfacial simulations. The model has well-defined mapping rules and should even be able to reproduce overall packing of graphite and even stacking distances.
+The graphene model employed here follows the Martini 3 parametrization developed by [Shrestha et al. JCTC (2025)](https://doi.org/10.1016/j.surfin.2025.106997), which can reproduces resonable well some structural, elastic, and adsorption trends of graphene within the Martini framework. The model uses a hexagonal lattice of tiny (T) beads and is designed to be used as a **rigid, periodic surface**, making it well suited for interfacial simulations. The model has well-defined mapping rules and should even be able to reproduce overall packing of graphite and even π-stacking distances.
 
 <p align="center">
   <img src="figures/graphene_AA_CG_model.png" width="750">
 </p>
 
-<em>**Figure 3**: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.
+<em>**Figure 4**: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.</em>
 
 In contrast to silica, **no parameter exploration is consider for graphite** in this course. The goal is simply to generate a surface of comparable lateral size to the silica slab, which can then be used in solid–ionic liquid interface simulations.
 
