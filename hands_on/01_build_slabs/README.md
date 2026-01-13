@@ -11,38 +11,41 @@ By the end of this hands-on you should be able to:
 - Control basic “surface properties” that influence interfacial behavior:
   - **bead type** (surface chemistry)
   - **bead spacing / surface density** (structure)
+  - **surface charge** 
 - Produce the files needed for the next hands-ons (coordinates + topology).
 
 ---
 
 ## 2. Background: CG surfaces in Martini
 
-In coarse-grained simulations, a solid surface can be represented as a **mesoscopic model** designed to reproduce key behaviors (e.g., wetting, layering, adsorption), rather than a one-to-one mapping of every atom. When building the CG silica slabs, we consider two possible simulation box geometries: **orthorhombic** and **hexagonal (triclinic)**. These choices correspond to different modeling intentions.
+In coarse-grained simulations, a solid surface can be represented as a **mesoscopic model**, meaning an intermediate description between full atomistic and continuum representations that captures collective interfacial behavior rather than explicit atomic detail. The goal is to reproduce key macroscopic or emergent properties (e.g., wetting, solvent layering, adsorption), not to maintain a one-to-one mapping between individual atoms and coarse-grained beads.
 
-Hexagonal (triclinic) boxes are the natural choice if one aims to represent a true crystalline α-quartz surface. Such a geometry would be appropriate if the goal were to model a specific quartz crystal face with atomistic fidelity. Orthorhombic boxes, on the other hand, are primarily a **computational convenience**. A triangular lattice can be embedded in an orthorhombic supercell without altering the local bead arrangement or surface bead density. In this case, the box shape does not represent a real crystal symmetry; it simply provides a rectangular container for the coarse-grained surface.
+In this framework, the CG silica slab is not constructed by mapping every silicon and oxygen atom to corresponding beads. Instead, the surface is built from effective interaction sites that represent groups of atoms or generic surface features, with interaction parameters chosen to reproduce the desired interfacial behavior. As a result, the model is **phenomenological rather than chemically exact**.
 
-In this context, the term *crystalline* refers to the **local bead arrangement and bead density** used to construct the slab, and **not** to long-range crystallographic symmetry as in atomistic models. Cambiaso et al. (2025) used orthorhombic boxes regardless of whether the surface was described as crystalline or amorphous. The focus of that work—and of the present hands-on—is on reproducing macroscopic interfacial properties (e.g., wetting behavior and contact angles) through the correct surface bead density, rather than on preserving crystallographic symmetry or atom-to-bead mapping.
+When building the CG silica slabs, we can consider two possible simulation box geometries: **orthorhombic** and **hexagonal (triclinic)**. These choices correspond to different modeling intentions. Hexagonal (triclinic) boxes are the natural choice if one aims to represent a true crystalline α-quartz surface. Such a geometry would be appropriate if the goal were to model a specific quartz crystal face with atomistic fidelity. Orthorhombic boxes, on the other hand, are primarily a **computational convenience**. A triangular lattice can be embedded in an orthorhombic supercell without altering the local bead arrangement or surface bead density. In this case, the box shape does not represent a real crystal symmetry; it simply provides a rectangular container for the coarse-grained surface.
+
+In this context, the term *crystalline* refers to the **local bead arrangement and bead density** used to construct the slab, and **not** to long-range crystallographic symmetry as in atomistic models. Indeed, Cambiaso et al. (2025) used orthorhombic boxes regardless of whether the surface was described as crystalline or amorphous. The focus of that work — and of the present hands-on — is on reproducing macroscopic interfacial properties through the correct surface bead density, rather than on preserving crystallographic symmetry or atom-to-bead mapping.
 
 This means that several choices are **part of the model definition**, not “details”:
 
 - **Surface bead density**, defined by the spacing between beads.
-- **Surface bead types**, which define the effective surface chemistry (and possibly surface charge).
+- **Surface bead properties**, which define the effective surface chemistry (and possibly surface charge).
 - **Surface rigidity**, i.e. whether the surface is treated as rigid, restrained, or flexible.
 
 These choices can strongly affect interfacial structure and dynamics, and they are expected to be tested and justified depending on the target application.
 
-In this course, we will focus on three practical knobs that you can tune and immediately interpret:
+In this course, we will focus on three practical modeling parameters that you can tune and immediately interpret:
 
 1. **Surface bead type (chemistry)**
-   - We assign different bead types to the **surface** and the **core** to represent different effective interactions with the liquid (following the modeling logic used for silica surfaces in the reference work). 
+   - We assign different bead types to the **surface** and the **core** to represent different effective interactions with the ionic liquid liquid (following the modeling logic used for silica surfaces in the reference work). 
 
 2. **Bead spacing / surface density (structure)**
-   - The distance between surface beads controls the effective roughness and interaction density seen by the liquid, which can change layering and organization near the interface. 
+   - The distance between surface beads controls the effective roughness and interaction density seen by the ionic liquid, which can change layering and organization near the interface. 
 
 Once the solid–ionic liquid systems are assembled (later hands-ons), we will quantify surface-induced effects using:
 
 - **partial density profiles** along the surface normal (layering, enrichment/depletion)
-- optional: RDFs, diffusion, and orientational order parameters
+- optional: RDFs, diffusion, and orientational order parameters can also be considered.
 
 For now, the goal is to build a clean, reproducible silica slab model with controllable parameters.
 
@@ -59,7 +62,7 @@ The slab model used in this tutorial has the following features:
 
 - **Core vs surface beads**  
   - **Core beads** represent the bulk of the solid and provide mechanical stability.
-  - **Surface beads** (top and bottom layers) define the effective surface chemistry experienced by the liquid.
+  - **Surface beads** (top and bottom layers) define the effective surface chemistry experienced by the ionic liquid.
 
 - **Bonded solid network**  
   Beads within a cutoff distance are connected by harmonic bonds, forming a mechanically stable solid.
@@ -71,12 +74,12 @@ The slab model used in this tutorial has the following features:
 
 ### 3.2 Generating the slab using the builder script
 
-In this hands-on, we generate a **reference silica slab** that closely follows the original model used in the literature. Copy build_silica_slab.py from 00_templates/. You can first run
+In this hands-on, we generate a **reference silica slab** that closely follows the original model used in Cambiaso et al 2025. Copy build_silica_slab.py from 00_templates/. You can first run
 
 ```bash
 python3 build_silica_slab.py -h
 ```
-To see the options of the code avaiable. But to start with an example, let's run:
+To see the options of the code avaiable. But to start with an eansy example, let's run:
 
 ```bash
 python3 build_silica_slab.py \
@@ -93,20 +96,26 @@ python3 build_silica_slab.py \
 **Key options explained:**
 
 - `-x 10.0 -y 10.0 -z 2.0 `  
-  Gives the dimensions of the box in nm, with 2520 beads distributed in 5 planes. As each bead can be considered more or less centered in the Si positions, this would be a crystal equivalent to 7560. So equivalent to a mapping of 3 non-hydrogen atoms represented by 1 bead (roughly like SiO₂) 
+  Gives the dimensions of the box in nm. Considering a 10 × 10 × 2 nm silica slab, this setup produces 2520 beads distributed over 5 planes. If one loosely associates each bead with a silicon-centered unit, this corresponds to roughly 7560 non-hydrogen atoms, i.e. an effective mapping of about three non-hydrogen atoms per bead (roughly SiO₂). However, this correspondence should not be interpreted as a strict atom-to-bead mapping: in this model, beads represent effective interaction sites chosen to reproduce macroscopic interfacial behavior, rather than chemically explicit Si and O atoms.
 
 - `-core N2` / `-surface N5`  
-  Assign different bead types to the bulk and surface to represent effective surface chemistry.
+  Assign different Martini bead types to the slab interior and the surface to represent effective surface chemistry. In the Martini model, bead types encode effective polarity and solvent affinity, rather than explicit chemical groups. Martini 3 organizes beads into broad chemical classes, such as C (apolar), N (intermediately polar), and P (polar), spanning a continuous range of interaction strengths. For silica surfaces, N5 beads can be used to represent highly hydrophilic environments, corresponding to surfaces rich in hydroxyl (–OH) groups at the atomistic level, while N2 beads represent less polar, more weakly interacting silica environments and are therefore considered a reasonable choice for the slab core.
+
+  <p align="center">
+  <img src="figures/graphene_AA_CG_model.png" width="750">
+</p>
+
+<em>**Figure 1**: Bead options in Martini 3.
 
 - `-bonds -ef 10000 -rcut 0.65`  
-  Create a stiff bonded network between neighboring beads (within 6.5 Å), ensuring the slab behaves as a solid.
+  Create a stiff bonded network between neighboring beads (within 6.5 Å), ensuring that the slab behaves as a solid. In principle, the force constant could be tuned to reproduce specific mechanical properties of the material. Here, however, it is used simply to keep the surface reasonably rigid and numerically stable under the chosen simulation conditions
 
 - `-pbc_bonds xy`  
   Apply periodic bonding only in the lateral directions, which is safe for slab geometries.
 
 - `-pr 10000`  
   Add **position restraints** to all slab beads (10 000 kJ mol⁻¹ nm⁻²).  
-  These restraints are intended **only for energy minimization and equilibration** and are activated by defining `POSRES` in the GROMACS `.mdp` file. Alternatively, you could use position restraints along the production, but without the adding a bonded network.
+  These restraints are intended **only for energy minimization and equilibration** and are activated by defining `POSRES` in the GROMACS `.mdp` file. Alternatively, you could use position restraints along the production simulations, but without the adding a bonded network.
 
 ---
 
@@ -123,7 +132,13 @@ The builder produces three files:
 - **silica.itp**  
   Topology file defining bead types, bonds, masses, charges, and optional position restraints
 
-These files will be reused in later hands-ons to assemble solid–ionic liquid systems.
+You can see a representation of this first silica slab in Figure 2. These files will be reused in later hands-ons to assemble solid–ionic liquid systems.
+
+<p align="center">
+  <img src="figures/graphene_AA_CG_model.png" width="750">
+</p>
+
+<em>**Figure 2**: Silica slab model, with core represented by cyan beads while the surface by red ones.
 
 ## 4. Modifying surface parameters
 
