@@ -105,7 +105,7 @@ python3 build_silica_slab.py \
   <img src="figures/graphene_AA_CG_model.png" width="750">
 </p>
 
-<em>**Figure 1**: Bead options in Martini 3.<em>
+<em>**Figure 1**: Bead options in Martini 3.</em>
 
 - `-bonds -ef 10000 -rcut 0.65`  
   Create a stiff bonded network between neighboring beads (within 6.5 Å), ensuring that the slab behaves as a solid. In principle, the force constant could be tuned to reproduce specific mechanical properties of the material. Here, however, it is used simply to keep the surface reasonably rigid and numerically stable under the chosen simulation conditions
@@ -138,11 +138,11 @@ You can see a representation of this first silica slab in Figure 2. These files 
   <img src="figures/graphene_AA_CG_model.png" width="750">
 </p>
 
-<em>**Figure 2**: Silica slab model, with core represented by cyan beads while the surface by red ones.
+<em>**Figure 2**: Silica slab model, with core represented by cyan beads while the surface by red ones.</em>
 
 ## 4. Modifying surface parameters
 
-Now that you have learned how the builder works, you can generate **controlled variations of surface properties**.  
+Now that you have learned the basics of how the builder works, you can generate **controlled variations of surface properties**. 
 The examples below illustrate simple and physically motivated modifications that can be explored systematically.
 
 ---
@@ -153,12 +153,10 @@ A first and intuitive modification is to change the **surface bead type**, which
 
 #### Example: hydrophobized silica surface
 
-Experimentally, silica surfaces are often hydrophobized by trimethylsilylation, replacing surface silanol groups with –Si(CH₃)₃ moieties.
-
-At the CG level, this can be mimicked by assigning a **nonpolar bead type** to the surface:
+Experimentally, silica surfaces are often hydrophobized by trimethylsilylation, replacing surface silanol groups with –Si(CH₃)₃ moieties. By inspecting the Supporting Information of the Martini 3 paper ((Souza et al., Nat. Methods 2025)[https://doi.org/10.1038/s41592-021-01098-3]; in particular Supplementary Table 24), one can consider that, at the coarse-grained level, this modification can be mimicked by assigning a **nonpolar C bead type* to the surface, such as C2. This can be achieved by adding the corresponding flag to the builder:
 
 ```bash
--surface C1
+-surface C2
 ```
 
 This represents a hydrophobic surface and is expected to reduce wetting and interfacial layering.
