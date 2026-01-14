@@ -106,7 +106,7 @@ python3 build_silica_slab.py \
   </p>
 
 <p align="center">
-<em>**Figure 1**: Bead options in Martini 3.</em>
+<em><strong>Figure 1</strong>: Bead options in Martini 3.</em>
 </p>
 
 - `-bonds -ef 10000 -rcut 0.65`  
@@ -139,7 +139,7 @@ You can see a representation of this first silica slab in Figure 2. These files 
 <p align="center">
   <img src="figures/silica.png" width="650">
 
-<em>**Figure 2**: Silica slab model, with core represented by gray beads (N2 type) while the surface by red ones (N5 type).</em>
+<em><strong>Figure 2</strong>: Silica slab model, with core represented by gray beads (N2 type) while the surface by red ones (N5 type).</em>
 </p>
 
 ## 4. Modifying surface parameters
