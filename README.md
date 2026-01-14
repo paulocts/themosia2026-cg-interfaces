@@ -7,13 +7,6 @@ The course combines **lectures** and **hands-on tutorials**, guiding participant
 
 ---
 
-<table>
-  <tr>
-    <td width="40%">
-      <img src="docs/Interface_box.png" width="100%">
-    </td>
-    <td width="60%">
-
 ## Course Information
 
 - **Event:** THEMOSIA Winter School 2026
@@ -26,6 +19,12 @@ The course combines **lectures** and **hands-on tutorials**, guiding participant
   - Dr. Paulo Cesar Telles de Souza (ENS de Lyon, CNRS, France)
 
 The coarse-grained module follows introductory molecular dynamics lectures earlier in the week.
+
+---
+
+<table>
+  <tr>
+    <td width="70%">
 
 ## Course Scope and Objectives
 
@@ -45,6 +44,10 @@ Topics covered include:
 The emphasis is on **model construction, physical insight, and critical interpretation**, rather than force-field development.
 
     </td>
+    <td width="30%">
+      <img src="docs/Interface_box.png" width="100%">
+    </td>
+
   </tr>
 </table>
 
