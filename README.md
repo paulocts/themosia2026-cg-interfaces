@@ -13,10 +13,8 @@ The course combines **lectures** and **hands-on tutorials**, guiding participant
 - **Location:** room M7.1H04 in CBPsmn at ENS de Lyon (Monod site), Lyon, France
 - **Dates:** January 19–23, 2026
   
-- **Coarse-grained Module:** January 22–23, 2026
-     
-- **Instructor:**  
-  - Dr. Paulo Cesar Telles de Souza (ENS de Lyon, CNRS, France)
+  - **Coarse-grained Module:** January 22–23, 2026
+  - **Instructor:** Dr. Paulo Cesar Telles de Souza (ENS de Lyon, CNRS, France)
 
 The coarse-grained module follows introductory molecular dynamics lectures earlier in the week.
 
