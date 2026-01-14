@@ -70,7 +70,7 @@ themosia2026-cg-interfaces/
 │   └── papers/                 # Paper to be consulted during the school
 │ 
 ├── hands_on/
-│   ├── 00_templates/           # Models, scripts, and template
+│   ├── 00_templates/           # Models and scripts
 │   ├── 01_build_slabs/         # Building solid surfaces 
 │   ├── 02_build_interface/     # Solid–ionic liquid interfaces
 │   └── 03_run_MD_and_analysis/ # Running CG MD (GROMACS / OpenMM)
