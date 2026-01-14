@@ -230,8 +230,10 @@ This option is useful for exploring:
 
 <p align="center">
   <img src="figures/silica_all.png" width="750">
+</p>
 
-<em>**Figure 3**: Representation of some of silica slab models discussed in this hands-on: (A) default silica slab (N5 type in the surface, red), (B) hydrophobized silica surface (C2 type in the surface, white), (C) amino-functionalized silica surface (N4dq bead with 0.5 partial charge, cyan), (D) 30% amino-functionalized patches on the top surface (Q4p with +1.0 charge).
+<p align="center">
+<em><strong>Figure 3</strong>: Representation of some of silica slab models discussed in this hands-on: (A) default silica slab (N5 type in the surface, red), (B) hydrophobized silica surface (C2 type in the surface, white), (C) amino-functionalized silica surface (N4dq bead with 0.5 partial charge, cyan), (D) 30% amino-functionalized patches on the top surface (Q4p with +1.0 charge).
   </em>
 </p>
 
@@ -261,7 +263,7 @@ The graphene model employed here follows the Martini 3 parametrization developed
 </p>
 
 <p align="center">
-<em>**Figure 4**: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.</em>
+<em><strong>Figure 4</strong>: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.</em>
 </p>
 
 In contrast to silica, **no parameter exploration is consider for graphite** in this course. The goal is simply to generate a surface of comparable lateral size to the silica slab, which can then be used in solid–ionic liquid interface simulations.
