@@ -50,7 +50,6 @@ The emphasis is on **model construction, physical insight, and critical interpre
 
 ---
 
-
 ## [Hands-on Sessions Overview](hands_on/)
 
 The hands-on material is organized into a sequence of tutorials located in the `hands_on/` directory.
@@ -60,6 +59,8 @@ The hands-on material is organized into a sequence of tutorials located in the `
 ### - Hands-on 02 – Building Solid–Ionic Liquid Interfaces
 
 ### - Hands-on 03 – Running CG Molecular Dynamics and Analysis 
+
+---
 
 ## Repository Organization
 
