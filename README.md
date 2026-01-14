@@ -10,7 +10,7 @@ The course combines **lectures** and **hands-on tutorials**, guiding participant
 <table>
   <tr>
     <td width="40%">
-      <img src="Interface_box.png" width="100%">
+      <img src="docs/Interface_box.png" width="100%">
     </td>
     <td width="60%">
 
