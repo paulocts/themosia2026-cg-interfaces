@@ -22,10 +22,10 @@ The coarse-grained module follows introductory molecular dynamics lectures earli
 
 ---
 
+## Course Scope and Objectives
 <table>
   <tr>
     <td width="70%">
-## Course Scope and Objectives
 
 The main objective of this course is to provide participants with **practical experience** in coarse-grained molecular simulations of interfaces.
 
