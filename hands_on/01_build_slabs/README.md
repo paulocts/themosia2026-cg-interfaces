@@ -102,7 +102,7 @@ python3 build_silica_slab.py \
   Assign different Martini bead types to the slab interior and the surface to represent effective surface chemistry. In the Martini model, bead types encode effective polarity and solvent affinity, rather than explicit chemical groups. Martini 3 organizes beads into broad chemical classes, such as C (apolar), N (intermediately polar), and P (polar), spanning a continuous range of interaction strengths More details are avaiable here [Marrink, et al. WIREs Comput Mol Sci (2023)](https://doi.org/10.1002/wcms.1620). For silica surfaces, N5 beads can be used to represent highly hydrophilic environments, corresponding to surfaces rich in hydroxyl (–OH) groups at the atomistic level, while N2 beads represent less polar, more weakly interacting silica environments and are therefore considered a reasonable choice for the slab core.
 
   <p align="center">
-  <img src="figures/Martini3_beads.png" width="750">
+  <img src="figures/Martini3_beads.png" width="900">
 </p>
 
 <em>**Figure 1**: Bead options in Martini 3.</em>
@@ -135,7 +135,7 @@ The builder produces three files:
 You can see a representation of this first silica slab in Figure 2. These files will be reused in later hands-ons to assemble solid–ionic liquid systems.
 
 <p align="center">
-  <img src="figures/silica.png" width="750">
+  <img src="figures/silica.png" width="650">
 </p>
 
 <em>**Figure 2**: Silica slab model, with core represented by gray beads (N2 type) while the surface by red ones (N5 type).</em>
@@ -227,7 +227,7 @@ This option is useful for exploring:
 - sensitivity of interfacial structure to surface disorder
 
 <p align="center">
-  <img src="figures/graphene_AA_CG_model.png" width="750">
+  <img src="figures/silica_all.png" width="750">
 </p>
 
 <em>**Figure 3**: Representation of some of silica slab models discussed in this hands-on: (A) default silica slab (N5 type in the surface, red), (B) hydrophobized silica surface (C2 type in the surface, white), (C) amino-functionalized silica surface (N4dq bead with 0.5 partial charge, cyan), (D) 30% amino-functionalized patches on the top surface (Q4p with +1.0 charge).
