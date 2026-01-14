@@ -103,7 +103,9 @@ python3 build_silica_slab.py \
 
   <p align="center">
   <img src="figures/Martini3_beads.png" width="900">
+  </p>
 
+<p align="center">
 <em>**Figure 1**: Bead options in Martini 3.</em>
 </p>
 
@@ -256,7 +258,9 @@ The graphene model employed here follows the Martini 3 parametrization developed
 
 <p align="center">
   <img src="figures/graphene_AA_CG_model.png" width="750">
+</p>
 
+<p align="center">
 <em>**Figure 4**: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.</em>
 </p>
 
