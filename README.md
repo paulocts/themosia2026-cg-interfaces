@@ -25,7 +25,6 @@ The coarse-grained module follows introductory molecular dynamics lectures earli
 <table>
   <tr>
     <td width="70%">
-
 ## Course Scope and Objectives
 
 The main objective of this course is to provide participants with **practical experience** in coarse-grained molecular simulations of interfaces.
@@ -42,12 +41,10 @@ Topics covered include:
 - Interpretation and limitations of CG results
 
 The emphasis is on **model construction, physical insight, and critical interpretation**, rather than force-field development.
-
     </td>
     <td width="30%">
       <img src="docs/Interface_box.png" width="100%">
     </td>
-
   </tr>
 </table>
 
