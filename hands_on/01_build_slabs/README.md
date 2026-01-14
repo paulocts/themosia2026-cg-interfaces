@@ -138,7 +138,9 @@ You can see a representation of this first silica slab in Figure 2. These files 
 
 <p align="center">
   <img src="figures/silica.png" width="650">
+</p>
 
+<p align="center">
 <em><strong>Figure 2</strong>: Silica slab model, with core represented by gray beads (N2 type) while the surface by red ones (N5 type).</em>
 </p>
 
