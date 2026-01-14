@@ -7,6 +7,13 @@ The course combines **lectures** and **hands-on tutorials**, guiding participant
 
 ---
 
+<table>
+  <tr>
+    <td width="40%">
+      <img src="Interface_box.png" width="100%">
+    </td>
+    <td width="60%">
+
 ## Course Information
 
 - **Event:** THEMOSIA Winter School 2026
@@ -36,6 +43,10 @@ Topics covered include:
 - Interpretation and limitations of CG results
 
 The emphasis is on **model construction, physical insight, and critical interpretation**, rather than force-field development.
+
+    </td>
+  </tr>
+</table>
 
 ---
 
