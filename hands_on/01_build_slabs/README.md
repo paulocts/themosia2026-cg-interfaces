@@ -103,9 +103,9 @@ python3 build_silica_slab.py \
 
   <p align="center">
   <img src="figures/Martini3_beads.png" width="900">
-</p>
 
 <em>**Figure 1**: Bead options in Martini 3.</em>
+</p>
 
 - `-bonds -ef 10000 -rcut 0.65`  
   Create a stiff bonded network between neighboring beads (within 6.5 Å), ensuring that the slab behaves as a solid. In principle, the force constant could be tuned to reproduce specific mechanical properties of the material. Here, however, it is used simply to keep the surface reasonably rigid and numerically stable under the chosen simulation conditions
@@ -136,9 +136,9 @@ You can see a representation of this first silica slab in Figure 2. These files 
 
 <p align="center">
   <img src="figures/silica.png" width="650">
-</p>
 
 <em>**Figure 2**: Silica slab model, with core represented by gray beads (N2 type) while the surface by red ones (N5 type).</em>
+</p>
 
 ## 4. Modifying surface parameters
 
@@ -228,10 +228,10 @@ This option is useful for exploring:
 
 <p align="center">
   <img src="figures/silica_all.png" width="750">
-</p>
 
 <em>**Figure 3**: Representation of some of silica slab models discussed in this hands-on: (A) default silica slab (N5 type in the surface, red), (B) hydrophobized silica surface (C2 type in the surface, white), (C) amino-functionalized silica surface (N4dq bead with 0.5 partial charge, cyan), (D) 30% amino-functionalized patches on the top surface (Q4p with +1.0 charge).
   </em>
+</p>
 
 ---
 
@@ -256,9 +256,9 @@ The graphene model employed here follows the Martini 3 parametrization developed
 
 <p align="center">
   <img src="figures/graphene_AA_CG_model.png" width="750">
-</p>
 
 <em>**Figure 4**: Graphene atomistic structure, mappin and CG model. Real particles are shown in black while red ones indicate virtual sites, typically used to increase numerical stability in Martini modes.</em>
+</p>
 
 In contrast to silica, **no parameter exploration is consider for graphite** in this course. The goal is simply to generate a surface of comparable lateral size to the silica slab, which can then be used in solid–ionic liquid interface simulations.
 
