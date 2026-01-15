@@ -20,21 +20,21 @@ These coarse-grained models reproduce key bulk properties of imidazolium-based i
   </p>
 
 <p align="center">
-<em><strong>Figure 1</strong>: Structural characterization  of Martini 3 CG models of ionic liquids. The model reproduce experimental macroscopic phases and some features of local structuralobserved in atomics models. Figure is adapted from Vazquez-Salazar et al. Green Chem., 2020. </em>
+<em><strong>Figure 1</strong>: Structural characterization  of Martini 3 CG models of ionic liquids. The model reasinably reproduce experimental macroscopic phases(A)  and some features of local structural observed in atomics models (B). Figure is adapted from Vazquez-Salazar et al. Green Chem., 2020. </em>
 </p>
 
 ### Ionic liquids considered
 
 We focus on **imidazolium-based ionic liquids** paired with the **BF<sub>4</sub><sup>−</sup>** anion, using two representative alkyl chain lengths on the cation:
 
-- **C2**: 1-ethyl-3-methylimidazolium tetrafluoroborate  
-- **C8**: 1-octyl-3-methylimidazolium tetrafluoroborate  
+- [C<sub>2</sub>mim][BF<sub>4</sub>] or **C2**: 1-ethyl-3-methylimidazolium tetrafluoroborate  
+- [C<sub>8</sub>mim][BF<sub>4</sub>] **C8**: 1-octyl-3-methylimidazolium tetrafluoroborate  
 
 These two systems span increasing degrees of **nanostructural heterogeneity** in the bulk ionic liquid, while **not forming lamellar phases under the conditions considered**. Lamellar ordering typically emerges only for longer alkyl chains (e.g. C12).
 
 This makes C2 and C8 ideal model systems to explore whether **solid surfaces can induce additional ordering or layering** in ionic liquids that is absent in the bulk.
 
-As a bonus (time permitting), the `00_templates/` directory also includes coarse-grained models for **C4 and C12 imidazolium-based ionic liquids**, as well as selected **phosphonium-based cations**, which can be explored for comparison or extended studies.
+As a bonus (if time allows), the `00_templates/` directory also includes coarse-grained models for **C4 and C12 imidazolium-based ionic liquids**, as well as a **phosphonium-based cations**(specifically trihexyltetradecylphosphonium), which can be explored for comparison or extended studies.
 
 
 ### Coarse-grained ionic liquid model
