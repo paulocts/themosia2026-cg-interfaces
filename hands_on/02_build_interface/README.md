@@ -2,7 +2,7 @@
 
 ## Objective
 
-In this hands-on, we build **solid–ionic liquid interfaces** using coarse-grained (CG) models within the Martini 3 framework. Starting from the solid surfaces constructed in Hands-on 01 (silica or graphite), we add imidazolium-based ionic liquids and prepare systems suitable for molecular dynamics simulations.
+In this hands-on, we build **solid–ionic liquid interfaces** using coarse-grained (CG) models within the Martini 3 framework. Starting from the solid surfaces constructed in Hands-on 01 (silica or graphite), we add Martini 3 models of imidazolium-based ionic liquids and prepare systems suitable for molecular dynamics simulations.
 
 The goal is to investigate **how solid surfaces influence the organization of ionic liquids**, focusing on interfacial layering, density profiles, and structural ordering.
 
@@ -10,17 +10,32 @@ The goal is to investigate **how solid surfaces influence the organization of io
 
 ## Background and modeling choices
 
+
+The coarse-grained models of ionic liquids used in this hands-on are based on the Martini 3 models developed and validated by [Vazquez-Salazar et al. Green Chem., 2020](https://doi.org/10.1039/D0GC01823F), with an updated verions release with the major publication of Martini force-field, [P.C.T. et al.Nature Methods 2021](https://doi.org/10.1038/s41592-021-01098-3).These models describe a family of **imidazolium-based ionic liquids** of the form **[C<sub>n</sub>mim][BF<sub>4</sub>]**, where **C<sub>n</sub>mim<sup>+</sup>** denotes the *1-alkyl-3-methylimidazolium* cation with an alkyl chain of length *n* (with *n* = 2, 4, or 8 in this course), and **BF<sub>4</sub><sup>−</sup>** is the *tetrafluoroborate* anion.
+
+These coarse-grained models reproduce key bulk properties of imidazolium-based ionic liquids, including density, nanostructural heterogeneity, and chain-length-dependent ordering (Figure 1). In this course, we exploit these validated bulk properties to investigate how solid surfaces further perturb ionic-liquid organization at solid–ionic liquid interfaces.
+
+  <p align="center">
+  <img src="figures/structure_IL.png" width="900">
+  </p>
+
+<p align="center">
+<em><strong>Figure 1</strong>: Structural characterization  of Martini 3 CG models of ionic liquids. The model reproduce experimental macroscopic phases and some features of local structuralobserved in atomics models. Figure is adapted from Vazquez-Salazar et al. Green Chem., 2020. </em>
+</p>
+
 ### Ionic liquids considered
 
-We focus on imidazolium-based ionic liquids paired with the **BF₄⁻** anion, with alkyl chain lengths:
+We focus on **imidazolium-based ionic liquids** paired with the **BF<sub>4</sub><sup>−</sup>** anion, using two representative alkyl chain lengths on the cation:
 
-- C2
-- C4
-- C8
+- **C2**: 1-ethyl-3-methylimidazolium tetrafluoroborate  
+- **C8**: 1-octyl-3-methylimidazolium tetrafluoroborate  
 
-These systems span increasing degrees of **nanostructural heterogeneity** in the bulk while **not forming lamellar phases under the conditions considered**. Lamellar ordering typically emerges only for longer chains (e.g. C12).
+These two systems span increasing degrees of **nanostructural heterogeneity** in the bulk ionic liquid, while **not forming lamellar phases under the conditions considered**. Lamellar ordering typically emerges only for longer alkyl chains (e.g. C12).
 
-This makes C2, C4, and C8 ideal candidates to explore whether **solid surfaces can induce additional ordering** that is absent in bulk.
+This makes C2 and C8 ideal model systems to explore whether **solid surfaces can induce additional ordering or layering** in ionic liquids that is absent in the bulk.
+
+As a bonus (time permitting), the `00_templates/` directory also includes coarse-grained models for **C4 and C12 imidazolium-based ionic liquids**, as well as selected **phosphonium-based cations**, which can be explored for comparison or extended studies.
+
 
 ### Coarse-grained ionic liquid model
 

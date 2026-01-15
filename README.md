@@ -3,7 +3,7 @@
 
 This repository contains the **hands-on course material** for the **THEMOSIA Winter School 2026**, focused on coarse-grained (CG) molecular modeling of **solid–ionic liquid interfaces** using the **Martini 3 force field**.
 
-The course combines **lectures** and **hands-on tutorials**, guiding participants through the construction, simulation, and analysis of CG models for interfaces involving **silica, graphene, and imidazolium-based ionic liquids**.
+The course combines **lectures** and **hands-on tutorials**, guiding participants through the construction, simulation, and analysis of CG models for interfaces involving **silica, graphite, and imidazolium-based ionic liquids**.
 
 ---
 
@@ -31,7 +31,7 @@ Topics covered include:
 
 - Fundamental principles of **coarse-graining**
 - Overview and philosophy of the **Martini 3 force field**
-- Modeling **solid surfaces** (as silica and graphene) in CG simulations
+- Modeling **solid surfaces** (as silica and graphite) in CG simulations
 - Coarse-grained representations of **imidazolium-based ionic liquids**
 - Construction of **solid–ionic liquid interfaces**
 - Running CG molecular dynamics simulations
