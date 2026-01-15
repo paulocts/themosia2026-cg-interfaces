@@ -63,18 +63,18 @@ As the focus of this hands-on is **not coarse-grained parametrization**, but rat
 
 To keep the setup robust and reproducible, we adopt the following strategy:
 
-- The **solid slab** (silica or graphite) is kept fixed during construction
-- Ionic liquids are inserted **above the surface** using **PACKMOL**
-- **Ion pairs (cation + anion)** are used during packing to guarantee charge neutrality
-- The simulation geometry is kept **identical for all systems**, enabling direct comparison
+- The **solid slab** (silica or graphite) is kept fixed during construction.
+- Ionic liquids are inserted **above the surface** using **PACKMOL**.
+- **Ion pairs (cation + anion)** are used during packing to guarantee charge neutrality and avoid possible numerical instabilities.
+- The simulation geometry is kept **identical for all systems**, enabling direct comparison.
 
 ### Fixed geometry for all systems
 
-- Solid slab: 10 × 10 × 2 nm
-- Ionic liquid region: 15 nm
-- Vacuum region: 10 nm
-- Total box height: 20 nm
-- Periodic boundary conditions in x and y
+- Solid slab: 10 × 10 × 2 nm  
+- Ionic liquid region: 15 nm  
+- Vacuum region: 3 nm  
+- Total box height: 20 nm  
+- Periodic boundary conditions in x and y  
 
 ---
 
@@ -86,17 +86,17 @@ Before building the interface, extract the lateral box dimensions from the surfa
 tail -n 1 silica.gro
 ```
 
-The x and y values will be reused to define the interface box, ensuring perfect lateral matching between surface and ionic liquid.
+The x and y values will be reused to define the interface box, ensuring perfect lateral matching between the surface and the ionic liquid. This is particularly important for simulations of rigid solids, especially when bonded terms connect the extremes of the solid through periodic boundary conditions. This avoids numerical instabilities, but requires the x–y box size to be defined precisely.
 
 ---
 
 ## Step 2 — PACKMOL input: slab + ionic liquid + vacuum
 
-PACKMOL is used to place ionic liquid **ion pairs** above the surface while leaving a vacuum region empty.
+PACKMOL is used to place the ionic liquid above the surface while leaving a vacuum region empty.
 
-Because Martini beads are larger and softer than atomistic particles, we use a **larger tolerance** than typical atomistic setups.
+Because Martini beads are larger and softer than atomistic particles, we use a **larger tolerance** than in typical atomistic setups. One practical strategy is to include cations and anions as **ion pairs**, which can help avoid excessive repulsion between highly charged groups placed too close to each other by PACKMOL. Below is an example for the C2 ionic liquid.
 
-### Example PACKMOL input (C4–BF₄)
+### Example PACKMOL input: C2 ionic liquid using ion pairs
 
 ```text
 tolerance 2.8
@@ -108,20 +108,19 @@ structure silica.pdb
   fixed 0.0 0.0 0.0   0.0 0.0 0.0
 end structure
 
-structure C4-BF4.pdb
-  number 4000
-  inside box 0.0 0.0 25.0   100.1700 99.1426 170.0
+structure C2-BF4.pdb
+  number 5000
+  inside box 0.0 0.0 23.0   100.1700 99.1426 170.0
 end structure
 ```
 
 Notes:
 
-- The slab occupies approximately z = 0–20 Å
-- Ionic liquid starts slightly above the surface (z = 25 Å) to avoid overlaps
-- The region above z = 170 Å is left empty and acts as vacuum
-- Charge neutrality is guaranteed by packing **ion pairs**
+- The slab occupies approximately z = 0–20 Å.
+- The ionic liquid starts slightly above the surface (z = 23 Å) to avoid overlaps.
+- Charge neutrality is guaranteed by packing **ion pairs**, but if you want to add extra ions for charged slabs, you can also use PDB files containing single ions (e.g. `BF4.pdb`).
 
-Run PACKMOL:
+Before running PACKMOL, be sure to copy the required PDB files from `00_templates/`. Then run:
 
 ```bash
 packmol < input.inp
@@ -131,29 +130,33 @@ packmol < input.inp
 
 ## Step 3 — Define the final simulation box
 
-Convert the PACKMOL output to a GROMACS `.gro` file and define the final box dimensions:
+In this step, a vacuum region is included in the simulation box. One convenient procedure is to convert the PACKMOL PDB output to a GROMACS `.gro` file and define the final box dimensions:
 
 ```bash
 gmx editconf -f silica_IL_vacuum.pdb -o box.gro -box 10.01700 9.91426 20.00000 -noc
 ```
 
-The x and y values must match those extracted from the surface file.
+The `-noc` flag prevents GROMACS from recentering the components in the large box. While not strictly required for the simulations, it is convenient for visualization.
+
+Be sure to use the same x and y values matching those extracted from the surface file.
 
 ---
 
 ## Step 4 — Reorder atoms for GROMACS topology
 
-PACKMOL does not guarantee molecule ordering. For GROMACS, we reorder the `.gro` file so that atoms appear in the following order:
+Since PACKMOL places ion pairs together, the coordinate file should be reordered to simplify topology handling. For GROMACS, reorder the `.gro` file so that atoms appear in the following order:
 
 1. Silica slab  
 2. Cations  
 3. Anions  
 
-Residue names used:
+For the example shown here, the residue names are:
 
-- Silica: 1SIS
-- Cation: 1BIM
-- Anion: 2BF4
+- Silica: `1SI`  
+- Cation: `1EIM`  
+- Anion: `2BF4`  
+
+Check the contents of the ion-pair PDB files in `00_templates/` to adapt this script for other cations.
 
 ### Reordering procedure
 
@@ -164,8 +167,8 @@ box=$(tail -n 1 box.gro)
 tail -n +3 box.gro | head -n -1 > atoms_only.tmp
 
 {
-  grep "^[[:space:]]*1SIS" atoms_only.tmp
-  grep "^[[:space:]]*1BIM" atoms_only.tmp
+  grep "^[[:space:]]*1SI" atoms_only.tmp
+  grep "^[[:space:]]*1EIM" atoms_only.tmp
   grep "^[[:space:]]*2BF4" atoms_only.tmp
 } > atoms_reordered.tmp
 
@@ -185,33 +188,36 @@ rm atoms_only.tmp atoms_reordered.tmp
 
 ## Step 5 — Topology file
 
-Example topology file:
+With the simulation box ready, a topology file must be created. An example is shown below:
 
 ```text
 #include "martini_v3.0.itp"
-#include "cation_C4C1imin.itp"
+#include "cation_C2C1imin.itp"
 #include "anion.itp"
 #include "silica.itp"
 
 [ system ]
-Interface silica C4-BF4
+Interface silica C2-BF4
 
 [ molecules ]
 SILICA_SLAB 1
-BIM   4000
+EIM   4000
 BF4   4000
 ```
+
+Notes:
+
+- `.itp` files in GROMACS contain force-field parameters. `martini_v3.0.itp` defines bead types and nonbonded interactions, while molecule-specific `.itp` files define bead assignments, charges, and bonded terms.
+- The `[ molecules ]` section must match both the **names** and the **order** of components in the `.gro` coordinate file.
 
 ---
 
 ## Final remarks and discussion points
 
 - The number of ion pairs is chosen to give a **reasonable filling** of the ionic liquid region. At the coarse-grained level, this is a modeling choice rather than a strict physical constraint.
-- The same geometry and protocol are used for C2, C4, and C8, enabling direct comparison.
-- In production studies, the number of ion pairs could be adjusted to reproduce bulk densities; this is not required for this hands-on.
+- The same protocol applies to C8 or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, C2 works well with ~5000 ion pairs, while ~3500 is reasonable for C8.
 
 ### Questions for discussion
 
 - How would this protocol need to be adapted for **charged silica surfaces**?
 - What changes (if any) are required when replacing silica with **graphite**?
-- How might surface chemistry influence ionic liquid layering and orientation?
