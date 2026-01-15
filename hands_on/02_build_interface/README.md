@@ -10,45 +10,28 @@ The goal is to investigate **how solid surfaces influence the organization of io
 
 ## Background and modeling choices
 
-The coarse-grained models of ionic liquids used in this hands-on are based on the Martini models developed and validated by **Vazquez-Salazar *et al.* (Green Chem., 2020)**, and are fully compatible with the final release of the Martini 3 force field described in **Souza *et al.* (Nat. Methods, 2021)**. These models describe a family of **imidazolium-based ionic liquids** of the form **[C<sub>n</sub>mim][BF<sub>4</sub>]**, where **C<sub>n</sub>mim<sup>+</sup>** denotes the *1-alkyl-3-methylimidazolium* cation with an alkyl chain of length *n* (with *n* = 2, 4, or 8 in this course), and **BF<sub>4</sub><sup>−</sup>** is the *tetrafluoroborate* anion.
-
-These coarse-grained models reproduce key bulk properties of imidazolium-based ionic liquids, including density, nanostructural heterogeneity, and chain-length-dependent ordering (Figure 1). In this course, we exploit these validated bulk properties to investigate how solid surfaces further perturb ionic-liquid organization at solid–ionic liquid interfaces.
-
-<p align="center">
-  <img src="figures/structure_IL.png" width="700">
-</p>
-
-<p align="center">
-<em><strong>Figure 1</strong>: Structural characterization of Martini 3 coarse-grained models of imidazolium-based ionic liquids. The models reproduce experimental macroscopic phase behavior (A) and key features of local structure observed in atomistic simulations (B). Figure adapted from Vazquez-Salazar <em>et al.</em>, Green Chemistry (2020).</em>
-</p>
-
-### Ionic liquids considered
-
-We focus on **imidazolium-based ionic liquids** paired with the **BF<sub>4</sub><sup>−</sup>** anion, using two representative alkyl chain lengths on the cation:
-
-- **[C<sub>2</sub>mim][BF<sub>4</sub>] (C2)**: 1-ethyl-3-methylimidazolium tetrafluoroborate  
-- **[C<sub>8</sub>mim][BF<sub>4</sub>] (C8)**: 1-octyl-3-methylimidazolium tetrafluoroborate  
-
-These two systems span increasing degrees of **nanostructural heterogeneity** in the bulk ionic liquid, while **not forming lamellar phases under the conditions considered**. Lamellar ordering typically emerges only for longer alkyl chains (e.g. C12).
-
-This makes C2 and C8 ideal model systems to explore whether **solid surfaces can induce additional ordering or layering** in ionic liquids that is absent in the bulk.
-
-As a bonus (if time allows), the `00_templates/` directory also includes coarse-grained models for **C4 and C12 imidazolium-based ionic liquids**, as well as a **phosphonium-based cation** (specifically trihexyltetradecylphosphonium), which can be explored for comparison or extended studies.
-
+The coarse-grained models of ionic liquids used in this hands-on are based on the Martini models developed and validated by [Vazquez-Salazar et al., *Green Chemistry*, 2020](https://doi.org/10.1039/D0GC01823F). This model was later updated, with a new version released together with the major publication of the Martini 3 force field, [Souza et al., *Nature Methods*, 2021](https://doi.org/10.1038/s41592-021-01098-3). These models describe a family of **imidazolium-based ionic liquids** of the form **[C<sub>n</sub>mim][BF<sub>4</sub>]**, where **C<sub>n</sub>mim<sup>+</sup>** denotes the *1-alkyl-3-methylimidazolium* cation with an al
 
 
 ### Coarse-grained ionic liquid model
 
-The coarse-grained ionic liquid models used here are based on the **Martini framework**, originally introduced in the context of **green chemistry applications**, and later **updated and validated within the final Martini 3 force field**.
+The coarse-grained ionic liquid models used here were built based on the following key features:
 
-Key features of these models include:
+- Careful **mapping and bonded geometry choices** to reproduce molecular volume, solvent-accessible surface area (SASA), and packing behavior.
+- Coupled with the previous point, careful parametrization of the bonded terms was also considered in order to reproduce distributions of bond distances, angles, and dihedrals obtained from atomistic simulations, such as those discussed in the previous days of this school.
+- Compatibility with the Martini 3 interaction matrix, respecting the expected bead assignments according to the chemistry being represented.
+- Use of **partial charges (q labels)** to represent charge delocalization on the imidazolium ring. The values of the charges in the imidazolium ring (+0.5 on each nitrogen-based bead) were computed according to a variant of the Dipole Preserving Charge method, based on quantum chemical calculations similar to those discussed on the first day of this school. This allowed for an improved electrostatic description, including possible quadrupolar effects. In this sense, simple dipole and quadrupole estimates can be used to help define an appropriate set of partial charges for the beads representing the imidazolium ions.
 
-- Use of **partial charges (q labels)** to represent charge delocalization on the imidazolium ring
-- Improved electrostatic description, including quadrupolar effects
-- Careful **mapping and bonded geometry choices** to reproduce molecular volume, solvent-accessible surface area (SASA), and packing behavior
-- Compatibility with the Martini 3 interaction matrix
+<p align="center">
+  <img src="figures/model_IL.png" width="700">
+</p>
 
-The focus of this hands-on is **not bulk phase behavior**, but rather **interfacial organization**.
+<p align="center">
+<em><strong>Figure 2</strong>: Martini 3 coarse-grained models of ionic liquids. (A) CG models of trihexyltetradecylphosphonium and 1,3-dialkylimidazolium
+cations, as well as tetrafluoroborate anions. The Martini bead types and sizes are indicated. Blue indicates positively charged groups, while red and gray indicate negatively charged and nonpolar groups, respectively. (B) Molecular surfaces (also called Connolly surfaces) of atomistic and coarse-grained structures of the C2 cation and the [BF<sub>4</sub>]<sup>−</sup> anion. Figure adapted from Vazquez-Salazar <em>et al.</em>, <em>Green Chemistry</em> (2020) and Souza <em>et al.</em>, <em>Nature Methods</em> (2021).</em>
+</p>
+
+As the focus of this hands-on is **not coarse-grained parametrization**, but rather **interfacial organization**, we will not extend this discussion further. Extensive examples of parametrization strategies are available in the tutorials provided by the [Martini Force Field Initiative website](https://cgmartini.nl/).
 
 ---
 
@@ -58,8 +41,8 @@ To keep the setup robust and reproducible, we adopt the following strategy:
 
 - The **solid slab** (silica or graphite) is kept fixed during construction
 - Ionic liquids are inserted **above the surface** using **PACKMOL**
-- **Ion pairs (cation + anion)** are used during packing to guarantee charge neutrality
-- The simulation geometry is kept **identical for all systems**, enabling direct comparison
+- **Ion pairs (cation + anion)** are used during packing to guarantee charge neutrality and repuced excessive repulsion between charges of same sign.
+- The simulation geometry is kept **identical for all systems**, enabling direct comparison.
 
 ### Fixed geometry for all systems
 
