@@ -16,7 +16,7 @@ The coarse-grained models of ionic liquids used in this hands-on are based on th
 These coarse-grained models reproduce key bulk properties of imidazolium-based ionic liquids, including density, nanostructural heterogeneity, and chain-length-dependent ordering (Figure 1). In this course, we exploit these validated bulk properties to investigate how solid surfaces further perturb ionic-liquid organization at solid–ionic liquid interfaces.
 
   <p align="center">
-  <img src="figures/structure_IL.png" width="900">
+  <img src="figures/structure_IL.png" width="700">
   </p>
 
 <p align="center">
