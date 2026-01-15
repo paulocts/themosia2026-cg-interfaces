@@ -39,27 +39,23 @@ As a bonus (if time allows), the `00_templates/` directory also includes coarse-
 
 ### Coarse-grained ionic liquid model
 
-The coarse-grained ionic liquid models used here are based on the **Martini framework**, originally introduced in the context of **green chemistry applications**, and later **updated and validated within the final Martini 3 force field**.
+The coarse-grained ionic liquid models used here were built based on the following key features:
 
-Key features of these models include:
-
-- Use of **partial charges (q labels)** to represent charge delocalization on the imidazolium ring
-- Improved electrostatic description, including quadrupolar effects
-- Careful **mapping and bonded geometry choices** to reproduce molecular volume, solvent-accessible surface area (SASA), and packing behavior
-- Compatibility with the Martini 3 interaction matrix
+- Careful **mapping and bonded geometry choices** to reproduce molecular volume, solvent-accessible surface area (SASA), and packing behavior.
+- Coupled with the previous point, careful parametrization of the bonded terms was also considered in order to reproduce distributions of bond distances, angles, and dihedrals obtained from atomistic simulations, such as those discussed in the previous days of this school.
+- Compatibility with the Martini 3 interaction matrix, respecting the expected bead assignments according to the chemistry being represented.
+- Use of **partial charges (q labels)** to represent charge delocalization on the imidazolium ring. The values of the charges in the imidazolium ring (+0.5 on each nitrogen-based bead) were computed according to a variant of the Dipole Preserving Charge method, based on quantum chemical calculations similar to those discussed on the first day of this school. This allowed for an improved electrostatic description, including possible quadrupolar effects. In this sense, simple dipole and quadrupole estimates can be used to help define an appropriate set of partial charges for the beads representing the imidazolium ions.
 
 <p align="center">
   <img src="figures/model_IL.png" width="700">
 </p>
 
 <p align="center">
-<em><strong>Figure 2</strong>: 16: Martini 3 Coarse-grained models of ionic liquids. (A) CG models of trihexyltetradecylphosphonium and 1,3 dialkylimidazolium
-cations, and also tetrafluoroborate anions. The Martini bead types and sizes are indicated. Blue indicates positive charged groups while the
-red gray color indicates the a negative charge and nonpolar groups, respectively. (B) Molecular surfaces (also called Connolly surfaces) of atomistic and coarse-grained structures of the C2 cation and the [BF4]− anion. Figure adapted from Vazquez-Salazar <em>et al.</em>, Green Chemistry (2020) and Souza *et al. (Nat. Methods, 2021) </em>
+<em><strong>Figure 2</strong>: Martini 3 coarse-grained models of ionic liquids. (A) CG models of trihexyltetradecylphosphonium and 1,3-dialkylimidazolium
+cations, as well as tetrafluoroborate anions. The Martini bead types and sizes are indicated. Blue indicates positively charged groups, while red and gray indicate negatively charged and nonpolar groups, respectively. (B) Molecular surfaces (also called Connolly surfaces) of atomistic and coarse-grained structures of the C2 cation and the [BF<sub>4</sub>]<sup>−</sup> anion. Figure adapted from Vazquez-Salazar et al., Green Chemistry (2020) and Souza et al., Nature Methods (2021).</em>
 </p>
 
-
-The focus of this hands-on is **not bulk phase behavior**, but rather **interfacial organization**.
+As the focus of this hands-on is **not coarse-grained parametrization**, but rather **interfacial organization**, we will not extend this discussion further. Extensive examples of parametrization strategies are available in the tutorials provided by the Martini Force Field Initiative website.
 
 ---
 
