@@ -222,7 +222,7 @@ Notes:
 ## Final remarks and discussion points
 
 - The number of ion pairs is chosen to give a **reasonable filling** of the ionic liquid region. At the coarse-grained level, this is a modeling choice rather than a strict physical constraint.
-- The same protocol applies to [C<sub>8</sub>mim][BF<sub>4</sub>] or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, [C<sub>2</sub>mim][BF<sub>4</sub>] works well with ~4200 ion pairs, while ~3500 is reasonable for [C<sub>8</sub>mim][BF<sub>4</sub>].
+- The same protocol applies to [C<sub>8</sub>mim][BF<sub>4</sub>] or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, [C<sub>4</sub>mim][BF<sub>4</sub>] works well with ~4200 ion pairs, while ~3500 is reasonable for [C<sub>8</sub>mim][BF<sub>4</sub>].
 
 ### Questions for discussion
 
