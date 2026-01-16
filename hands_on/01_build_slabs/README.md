@@ -296,38 +296,56 @@ The reported *x* and *y* values will be reused when redefining the box height.
 
 ---
 
-### 5.2 Defining the interlayer spacing
+## 5.2 Defining the interlayer spacing
 
-The graphene builder ensures correct lateral periodicity (*x* and *y*), but the box height (*z*) must be defined manually before stacking layers.
+The graphene builder ensures correct lateral periodicity in **x** and **y**, but the box height (**z**) must be defined manually before stacking layers.
 
-In the Martini 3 graphene model, carbon atoms are represented by **Tiny beads** with a Lennard–Jones size parameter of approximately  
-\(\sigma \approx 0.34\) nm. For a standard Lennard–Jones 12–6 potential, the minimum of the interaction potential occurs at:
+In the **Martini 3 graphene model**, carbon atoms are represented by **Tiny beads** with a Lennard–Jones size parameter of approximately:
 
 \[
-r_\text{min} = 2^{1/6}\sigma \approx 0.382\ \text{nm}
+\sigma \approx 0.34\ \text{nm}
+\]
+
+For a standard Lennard–Jones 12–6 potential, the minimum of the interaction potential occurs at:
+
+\[
+r_{\text{min}} = 2^{1/6}\sigma \approx 0.382\ \text{nm}
 \]
 
 We use this value as an effective **interlayer spacing** when constructing a graphitic slab.
 
-Redefine the box height using the *x* and *y* values obtained from `tail -n 1`:
+### Redefine the box height
+
+Use the **X** and **Y** values obtained from the last line of `graphene.gro`:
+
+```bash
+tail -n 1 graphene.gro
+```
+
+Then redefine the box height (**z**) as `0.382 nm`:
 
 ```bash
 gmx editconf -f graphene.gro -box X Y 0.382 -o graphene_1layer.gro
 ```
 
-where `X` and `Y` are taken directly from the last line of `graphene.gro`.
+✅ **Note:** Replace `X` and `Y` with the values taken directly from the last line of `graphene.gro`.
 
 ---
 
-### 5.3 Stacking graphene layers to obtain graphite
+## 5.3 Stacking graphene layers to obtain graphite
 
-A graphitic slab is constructed by stacking multiple graphene layers along the *z* direction. In this course, we use **five layers**, which is sufficient to represent a graphite substrate at the coarse-grained level.
+A graphitic slab is constructed by stacking multiple graphene layers along the **z direction**. In this course, we use **five layers**, which is sufficient to represent a graphite substrate at the coarse-grained level.
+
+Stack 5 layers:
 
 ```bash
 gmx genconf -f graphene_1layer.gro -o graphite.gro -nbox 1 1 5
 ```
 
-This produces a five-layer graphite slab with a total thickness of  
-\(5 \times 0.382 \approx 1.9\) nm.
+This produces a five-layer graphite slab with a total thickness of:
+
+\[
+5 \times 0.382 \approx 1.9\ \text{nm}
+\]
 
 
