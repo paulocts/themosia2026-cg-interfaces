@@ -300,11 +300,7 @@ The reported *x* and *y* values will be reused when redefining the box height.
 
 The graphene builder ensures correct lateral periodicity in **x** and **y**, but the box height (**z**) must be defined manually before stacking layers.
 
-In the **Martini 3 graphene model**, carbon atoms are represented by **Tiny beads** with a Lennard–Jones size parameter of approximately:
-
-$$
-\sigma \approx 0.34\ \text{nm}
-$$
+In the **Martini 3 graphene model**, carbon atoms are represented by **Tiny beads** (TC5) with a Lennard–Jones size parameter of approximately: $$ \sigma \approx 0.34\ \text{nm} $$
 
 For a standard Lennard–Jones 12–6 potential, the minimum of the interaction potential occurs at:
 
