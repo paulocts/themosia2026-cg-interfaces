@@ -302,15 +302,15 @@ The graphene builder ensures correct lateral periodicity in **x** and **y**, but
 
 In the **Martini 3 graphene model**, carbon atoms are represented by **Tiny beads** with a Lennard–Jones size parameter of approximately:
 
-\[
+$$
 \sigma \approx 0.34\ \text{nm}
-\]
+$$
 
 For a standard Lennard–Jones 12–6 potential, the minimum of the interaction potential occurs at:
 
-\[
+$$
 r_{\text{min}} = 2^{1/6}\sigma \approx 0.382\ \text{nm}
-\]
+$$
 
 We use this value as an effective **interlayer spacing** when constructing a graphitic slab.
 
@@ -344,8 +344,8 @@ gmx genconf -f graphene_1layer.gro -o graphite.gro -nbox 1 1 5
 
 This produces a five-layer graphite slab with a total thickness of:
 
-\[
+$$
 5 \times 0.382 \approx 1.9\ \text{nm}
-\]
+$$
 
 
