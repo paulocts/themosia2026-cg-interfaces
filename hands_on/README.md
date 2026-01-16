@@ -12,7 +12,7 @@
 - Imidazolium-based ionic liquids with different alkyl chain lengths.
 - Combining solid slabs with ionic liquids
 - Introduction of vacuum / gas regions
-- Boundary conditions and simulation setup
+- Simulation Boxes and topology files
 
 ## [-Hands-on 03 – Running CG Molecular Dynamics](03_run_md_and_analysis/)
 - Running Martini 3 simulations using GROMACS
