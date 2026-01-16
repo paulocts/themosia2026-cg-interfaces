@@ -11,3 +11,6 @@ Participants are encouraged to consult the following references:
 - Shrestha, R. et al. [Martini 3 Coarse-Grained Models for Carbon Nanomaterials](https://doi.org/10.1021/acs.jctc.5c00923) J. Chem. Theory Comput. 2025, 21, 18, 9035–9053 (2025).
 
 - Cambiaso, S. et al. [Solid–liquid interfaces in MARTINI 3: Modeling approaches and the case study of silica surfaces in water](https://doi.org/10.1016/j.surfin.2025.106997) Surfaces and Interfaces, 72, 106997 (2025).
+
+- Alessandri, R. et al. [The Martini Model in Materials Science](https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202008635) Advanced Materials, 33, 2008635 (2021).
+
