@@ -34,7 +34,7 @@ These two systems span increasing degrees of **nanostructural heterogeneity** in
 
 This makes [C<sub>2</sub>mim][BF<sub>4</sub>] and [C<sub>8</sub>mim][BF<sub>4</sub>] ideal model systems to explore whether **solid surfaces can induce additional ordering or layering** in ionic liquids that is absent in the bulk.
 
-As a bonus (if time allows), the `00_templates/` directory also includes coarse-grained models for **[C<sub>4</sub>mim][BF<sub>4</sub>] and [C<sub>12</sub>mim][BF<sub>4</sub>] imidazolium-based ionic liquids**, as well as a **phosphonium-based cations**(specifically trihexyltetradecylphosphonium), which can be explored for comparison or extended studies.
+As a bonus (if time allows), the `00_templates/` directory also includes coarse-grained models for **[C<sub>4</sub>mim][BF<sub>4</sub>]** and **[C<sub>12</sub>mim][BF<sub>4</sub>] imidazolium-based ionic liquids**, as well as a **phosphonium-based cations**(specifically trihexyltetradecylphosphonium), which can be explored for comparison or extended studies.
 
 
 ### Coarse-grained ionic liquid model
@@ -92,7 +92,7 @@ The x and y values will be reused to define the interface box, ensuring perfect 
 
 ## Step 2 — PACKMOL input: slab + ionic liquid + vacuum
 
-PACKMOL is used to place the ionic liquid above the surface while leaving a vacuum region empty.
+PACKMOL is used to place the ionic liquid above the surface while leaving a vacuum region empty. Be aware that PACKMOL use Å as dimension units.
 
 Because Martini beads are larger and softer than atomistic particles, we use a **larger tolerance** than in typical atomistic setups. One practical strategy is to include cations and anions as **ion pairs**, which can help avoid excessive repulsion between highly charged groups placed too close to each other by PACKMOL. Below is an example for the [C<sub>2</sub>mim][BF<sub>4</sub>] ionic liquid.
 
@@ -108,7 +108,7 @@ structure silica.pdb
   fixed 0.0 0.0 0.0   0.0 0.0 0.0
 end structure
 
-structure C2-BF4.pdb
+structure C2imin-BF4.pdb
   number 5000
   inside box 0.0 0.0 23.0   100.1700 99.1426 170.0
 end structure
@@ -138,7 +138,7 @@ gmx editconf -f silica_IL_vacuum.pdb -o box.gro -box 10.01700 9.91426 20.00000 -
 
 The `-noc` flag prevents GROMACS from recentering the components in the large box. While not strictly required for the simulations, it is convenient for visualization.
 
-Be sure to use the same x and y values matching those extracted from the surface file.
+Be sure to use the same x and y values matching those extracted from the surface file. Pay also attention that in this last step here the dimension units are in nm. 
 
 ---
 
@@ -188,7 +188,13 @@ rm atoms_only.tmp atoms_reordered.tmp
 
 ## Step 5 — Topology file
 
-With the simulation box ready, a topology file must be created. An example is shown below:
+With the simulation box ready, a topology file must be created. You can use text editors as `gvim` or `nano` for the task. 
+
+```bash
+gvim topolo.top
+```
+
+You can now write the information below:
 
 ```text
 #include "martini_v3.0.itp"
@@ -201,13 +207,14 @@ Interface silica C2imin-BF4
 
 [ molecules ]
 SILICA_SLAB 1
-EIM   4000
-BF4   4000
+EIM   5000
+BF4   5000
 ```
 
 Notes:
 
 - `.itp` files in GROMACS contain force-field parameters. `martini_v3.0.itp` defines bead types and nonbonded interactions, while molecule-specific `.itp` files define bead assignments, charges, and bonded terms.
+- `[ system ]` is only a label for the box. You can define as you prefer.
 - The `[ molecules ]` section must match both the **names** and the **order** of components in the `.gro` coordinate file.
 
 ---
@@ -215,7 +222,7 @@ Notes:
 ## Final remarks and discussion points
 
 - The number of ion pairs is chosen to give a **reasonable filling** of the ionic liquid region. At the coarse-grained level, this is a modeling choice rather than a strict physical constraint.
-- The same protocol applies to [C<sub>8</sub>mim][BF<sub>4</sub>] or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, [C<sub>2</sub>mim][BF<sub>4</sub>] works well with ~5000 ion pairs, while ~3500 is reasonable for [C<sub>8</sub>mim][BF<sub>4</sub>].
+- The same protocol applies to [C<sub>8</sub>mim][BF<sub>4</sub>] or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, [C<sub>2</sub>mim][BF<sub>4</sub>] works well with ~4200 ion pairs, while ~3500 is reasonable for [C<sub>8</sub>mim][BF<sub>4</sub>].
 
 ### Questions for discussion
 
