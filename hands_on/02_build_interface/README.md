@@ -27,14 +27,14 @@ These coarse-grained models reproduce key bulk properties of imidazolium-based i
 
 We focus on **imidazolium-based ionic liquids** paired with the **BF<sub>4</sub><sup>−</sup>** anion, using two representative alkyl chain lengths on the cation:
 
-- [C<sub>2</sub>mim][BF<sub>4</sub>] or **C2**: 1-ethyl-3-methylimidazolium tetrafluoroborate  
-- [C<sub>8</sub>mim][BF<sub>4</sub>] or **C8**: 1-octyl-3-methylimidazolium tetrafluoroborate  
+- [C<sub>2</sub>mim][BF<sub>4</sub>]: 1-ethyl-3-methylimidazolium tetrafluoroborate  
+- [C<sub>8</sub>mim][BF<sub>4</sub>]: 1-octyl-3-methylimidazolium tetrafluoroborate  
 
-These two systems span increasing degrees of **nanostructural heterogeneity** in the bulk ionic liquid, while **not forming lamellar phases under the conditions considered**. Lamellar ordering typically emerges only for longer alkyl chains (e.g. C12).
+These two systems span increasing degrees of **nanostructural heterogeneity** in the bulk ionic liquid, while **not forming lamellar phases under the conditions considered**. Lamellar ordering typically emerges only for longer alkyl chains (e.g. [C<sub>12</sub>mim][BF<sub>4</sub>]).
 
-This makes C2 and C8 ideal model systems to explore whether **solid surfaces can induce additional ordering or layering** in ionic liquids that is absent in the bulk.
+This makes [C<sub>2</sub>mim][BF<sub>4</sub>] and [C<sub>8</sub>mim][BF<sub>4</sub>] ideal model systems to explore whether **solid surfaces can induce additional ordering or layering** in ionic liquids that is absent in the bulk.
 
-As a bonus (if time allows), the `00_templates/` directory also includes coarse-grained models for **C4 and C12 imidazolium-based ionic liquids**, as well as a **phosphonium-based cations**(specifically trihexyltetradecylphosphonium), which can be explored for comparison or extended studies.
+As a bonus (if time allows), the `00_templates/` directory also includes coarse-grained models for **[C<sub>4</sub>mim][BF<sub>4</sub>] and [C<sub>12</sub>mim][BF<sub>4</sub>] imidazolium-based ionic liquids**, as well as a **phosphonium-based cations**(specifically trihexyltetradecylphosphonium), which can be explored for comparison or extended studies.
 
 
 ### Coarse-grained ionic liquid model
@@ -52,7 +52,7 @@ The coarse-grained ionic liquid models used here were built based on the followi
 
 <p align="center">
 <em><strong>Figure 2</strong>: Martini 3 CG models of ionic liquids. (A) CG models of trihexyltetradecylphosphonium and 1,3-dialkylimidazolium
-cations, as well as tetrafluoroborate anions. The Martini bead types and sizes are indicated. Blue indicates positively charged groups, while red and gray indicate negatively charged and nonpolar groups, respectively. (B) Molecular surfaces (also called Connolly surfaces) of atomistic and CG structures of the C2 cation and the [BF<sub>4</sub>]<sup>−</sup> anion. Figure adapted from Vazquez-Salazar et al., Green Chem. (2020) and Souza et al., Nat. Methods (2021).</em>
+cations, as well as tetrafluoroborate anions. The Martini bead types and sizes are indicated. Blue indicates positively charged groups, while red and gray indicate negatively charged and nonpolar groups, respectively. (B) Molecular surfaces (also called Connolly surfaces) of atomistic and CG structures of the [C<sub>2</sub>mim][BF<sub>4</sub>] cation and the [BF<sub>4</sub>]<sup>−</sup> anion. Figure adapted from Vazquez-Salazar et al., Green Chem. (2020) and Souza et al., Nat. Methods (2021).</em>
 </p>
 
 As the focus of this hands-on is **not coarse-grained parametrization**, but rather **interfacial organization**, we will not extend this discussion further. Extensive examples of parametrization strategies are available in the tutorials provided by the Martini Force Field Initiative website.
@@ -94,9 +94,9 @@ The x and y values will be reused to define the interface box, ensuring perfect 
 
 PACKMOL is used to place the ionic liquid above the surface while leaving a vacuum region empty.
 
-Because Martini beads are larger and softer than atomistic particles, we use a **larger tolerance** than in typical atomistic setups. One practical strategy is to include cations and anions as **ion pairs**, which can help avoid excessive repulsion between highly charged groups placed too close to each other by PACKMOL. Below is an example for the C2 ionic liquid.
+Because Martini beads are larger and softer than atomistic particles, we use a **larger tolerance** than in typical atomistic setups. One practical strategy is to include cations and anions as **ion pairs**, which can help avoid excessive repulsion between highly charged groups placed too close to each other by PACKMOL. Below is an example for the [C<sub>2</sub>mim][BF<sub>4</sub>] ionic liquid.
 
-### Example PACKMOL input: C2 ionic liquid using ion pairs
+### Example PACKMOL input: [C<sub>2</sub>mim][BF<sub>4</sub>] ionic liquid using ion pairs
 
 ```text
 tolerance 2.8
@@ -192,12 +192,12 @@ With the simulation box ready, a topology file must be created. An example is sh
 
 ```text
 #include "martini_v3.0.itp"
-#include "cation_C2C1imin.itp"
+#include "cation_C2imin.itp"
 #include "anion.itp"
 #include "silica.itp"
 
 [ system ]
-Interface silica C2-BF4
+Interface silica C2imin-BF4
 
 [ molecules ]
 SILICA_SLAB 1
@@ -215,7 +215,7 @@ Notes:
 ## Final remarks and discussion points
 
 - The number of ion pairs is chosen to give a **reasonable filling** of the ionic liquid region. At the coarse-grained level, this is a modeling choice rather than a strict physical constraint.
-- The same protocol applies to C8 or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, C2 works well with ~5000 ion pairs, while ~3500 is reasonable for C8.
+- The same protocol applies to [C<sub>8</sub>mim][BF<sub>4</sub>] or other ionic liquids, but the number of ion pairs must be adjusted. Larger cations occupy more space; as a rough guideline, [C<sub>2</sub>mim][BF<sub>4</sub>] works well with ~5000 ion pairs, while ~3500 is reasonable for [C<sub>8</sub>mim][BF<sub>4</sub>].
 
 ### Questions for discussion
 
