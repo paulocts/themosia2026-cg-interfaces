@@ -40,7 +40,7 @@ With all the files ready from the previous hands on, now is time to run the simu
 
 **Note on common options:**
 - `-nt` sets the number of CPU threads used by `mdrun`.
-- `-deffnm` sets the default filename prefix for all output files (e.g., `md.xtc`, `md.edr`, `md.log`).
+- `-deffnm` sets the default filename prefix for all output files (e.g., `traj_comp.xtc`, `md.edr`, `md.log`).
 
 
 ### 1) Energy minimization
@@ -75,7 +75,13 @@ These checks are fast and help confirm the setup is correct before analysis:
   - For both steps, the code gmx energy -f file_name.edr can be used to see how properties like temperature and potential energy are evolving with time.
 - **During production:** the trajectory runs without crashes and the interface remains stable.
 
-A simple visual inspection in VMD of `eq.gro` + `md.xtc` is usually sufficient. Some options to better present the molecules in the CG resolution and render figures will be discussed during the school.
+A simple visual inspection in VMD of `eq.gro` + `traj_comp.xtc` is usually sufficient. 
+
+```bash
+vmd eq.gro traj_comp.xtc
+```
+
+Some options to better present the molecules in the CG resolution and render figures will be discussed during the school.
 
 ---
 
@@ -86,16 +92,14 @@ A simple visual inspection in VMD of `eq.gro` + `md.xtc` is usually sufficient. 
 Before starting the analysis, we need to define some instructions in terms of groups that we are interested to look in detail. We define index groups to separate the solid, cation, anion, and specific bead types within the ionic liquid.
 
 ```bash
-gmx make_ndx -f md.tpr -o index.ndx
+gmx make_ndx -f eq.gro -o index.ndx
 ```
 
-You can see some residue names pre-defined based on the information in the tpr file. Typical groups include:
+You can see some residue names pre-defined based on the information in the gro file. Typical groups include:
 
 - Solid beads (e.g., silica or graphite)
 - Cation
 - Anion (BF4)
-- Imidazolium head beads
-- Alkyl tail beads (depending on chain length)
 
 If you select "a SI1 SI2" you will create a group only with two beads from the head of the imidazolium ion. Selection "a SI3 ... SIn" should now indicate a group only with the tails.
 
@@ -110,7 +114,7 @@ Example command (adjust group numbers as needed):
 ```bash
 gmx density \
   -s md.tpr \
-  -f md.xtc \
+  -f traj_comp.xtc \
   -n index.ndx \
   -ng 5 \
   -center \
@@ -129,7 +133,7 @@ Notes:
 - `-ng` indicates how many groups will be included in the analysis. Up to five groups is usually enough (surface, cation head, cation tail, anion, etc.).
 - `-sl 500` provides sufficient resolution for long boxes. You can change the values to see if you get more details or get the curves smoother.
 - `-dens` define how the density profile will be computed. Here we select option number which normalize the densities using the number or particles.
-- fix_xvg.sh is use to better display the density profiles considering the periodic boundary conditions.
+- `fix_xvg.sh` is use to better display the density profiles considering the periodic boundary conditions.
 
 The plots can be visualized using `xmgrace -nxy density.xvg`. During the course we can discuss how figures can be generated. If you know other plotting options, feel free to use them.
 
@@ -141,7 +145,7 @@ Discussion question: How far does the surface-induced ordering extend into the i
 
 If you reach the end of this hands-on, each group should have:
 
-- A short production trajectory (`md.xtc`, `md.gro`) for at least four systems: C2 and C8 IL in two different surfaces
+- A short production trajectory (`traj_comp.xtc`, `md.gro`) for at least four systems: C2 and C8 IL in two different surfaces
 - Density profiles along z for:
   - Solid reference
   - Cation head beads
