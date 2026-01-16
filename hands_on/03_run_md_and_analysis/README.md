@@ -6,7 +6,7 @@ In this hands-on, we run short coarse-grained (Martini 3) molecular dynamics sim
 
 The central question is:
 
-**Do silica or graphite surfaces induce additional ordering in imidazolium-based ionic liquids (C2, C4, C8)?**
+**Do silica or graphite surfaces induce additional ordering in imidazolium-based ionic liquids like [C<sub>2</sub>mim][BF<sub>4</sub>] or [C<sub>8</sub>mim][BF<sub>4</sub>])?**
 
 ---
 
@@ -145,7 +145,7 @@ Discussion question: How far does the surface-induced ordering extend into the i
 
 If you reach the end of this hands-on, each group should have:
 
-- A short production trajectory (`traj_comp.xtc`, `md.gro`) for at least four systems: C2 and C8 IL in two different surfaces
+- A short production trajectory (`traj_comp.xtc`, `md.gro`) for at least four systems: [C<sub>2</sub>mim][BF<sub>4</sub>] and [C<sub>8</sub>mim][BF<sub>4</sub>] IL in two different surfaces
 - Density profiles along z for:
   - Solid reference
   - Cation head beads
@@ -153,7 +153,7 @@ If you reach the end of this hands-on, each group should have:
   - Anion
 - A short interpretation (2–3 sentences) addressing:
   - Presence or absence of layering
-  - Effect of alkyl chain length (C2 vs C4 vs C8)
+  - Effect of alkyl chain length ([C<sub>2</sub>mim] vs [C<sub>8</sub>mim])
   - Differences between silica and graphite
 
 ---
