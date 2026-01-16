@@ -6,7 +6,7 @@
   - bead types
   - surface charges
   - charge
-- Construction of **graphene surfaces** using Martini 3 models
+- Construction of **graphite slabs** using Martini 3 graphene models
 
 ## [-Hands-on 02 – Building Solid–Ionic Liquid Interfaces](02_build_interface/)
 - Imidazolium-based ionic liquids with different alkyl chain lengths.
