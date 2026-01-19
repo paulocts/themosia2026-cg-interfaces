@@ -19,10 +19,10 @@ cd work
 mkdir silica_C2mimi-BF4
 ```
 
-Then along the hands-on, copy template files you need into your working folder. For instance, to copy C2mim-BF4.pdb
+Then along the hands-on, copy template files you need into your working folder. For instance, to copy `C2mim-BF4.pdb`
 
 ```bash
-cp -r ../00_templates/pdbC2mim-BF4.pdb   silica_C2mimi-BF4/
+cp -r ../00_templates/pdbC2mim-BF4.pdb  silica_C2mimi-BF4/
 cd silica_C2mimi-BF4/
 ```
 
