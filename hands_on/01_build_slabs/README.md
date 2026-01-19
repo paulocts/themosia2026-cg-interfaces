@@ -348,4 +348,11 @@ $$
 5 \times 0.382 \approx 1.9\ \text{nm}
 $$
 
+<p align="center">
+  <img src="figures/graphite.png" width="650">
+</p>
+
+<p align="center">
+<em><strong>Figure 2</strong>: Graphite slab model, with core represented by TC5 beads.</em>
+</p>
 
