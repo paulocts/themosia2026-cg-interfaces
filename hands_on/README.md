@@ -29,7 +29,7 @@ software available system-wide:
 - [VMD](https://www.ks.uiuc.edu/Research/vmd/])
 - [Packmol](https://m3g.github.io/packmol/)
 - [Python](https://www.python.org/)
-- [OpenMM for Martini 3](https://github.com/maccallumlab/martini_openmm) (optional)
+- [MDAnalysis](https://www.mdanalysis.org/)
 
 ---
 
