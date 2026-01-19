@@ -1,7 +1,7 @@
 # Hands-on Sessions Overview
 
 ## [-Hands-on 01 – Building solid surfaces](01_build_slabs/)
-- Construction of Martini3 models of **silica slabs** using a custom CG builder
+- Construction of Martini 3 models of **silica slabs** using a custom CG builder
 - Exploration of surface parameters:
   - chesmitry and bead types
   - surface density
@@ -21,6 +21,8 @@
 - Analysis
   - Partial density profiles
 
+---
+
 # Software environment
 The hands-on sessions were tested on Debian Linux systems with the following
 software available system-wide:
@@ -31,6 +33,14 @@ software available system-wide:
 - [Python](https://www.python.org/)
 - [MDAnalysis](https://www.mdanalysis.org/)
 
+> **Note:** All tools are already installed in the computer, except for Packmol and MDAnalysis, You may use them via a dedicated Python virtual environment.
+> You can activate it with:
+>
+> ```bash
+> source /projects/themosia/CG/virtual_env/bin/activate
+> ```
+
 ---
+
 
 
