@@ -1,0 +1,13 @@
+tolerance 2.8
+filetype pdb
+output graphite_C2mim-BF4.pdb
+seed 12345
+
+structure graphite.pdb
+  fixed 0.0 0.0 0.0   0.0 0.0 0.0
+end structure
+
+structure C2mim-BF4.pdb
+  number 5000
+  inside box 0.0 0.0 23.0   100.000 100.000 170.0
+end structure

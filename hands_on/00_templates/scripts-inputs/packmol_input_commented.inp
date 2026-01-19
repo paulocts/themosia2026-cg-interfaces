@@ -1,0 +1,18 @@
+# typical tolerance for CG
+tolerance 2.8
+
+#  Define the surface used
+filetype pdb
+output surface_IL.pdb
+seed 12345
+
+#  Change the surface pdb name here to use you the surface you created.
+structure surface.pdb
+  fixed 0.0 0.0 0.0   0.0 0.0 0.0
+end structure
+
+# Change the IL you want to use and redefine the slab dimension and box sides 
+structure IL_pair.pdb
+  number "Number of ion pairs - depends on the size of the cation" 
+  inside box 0.0 0.0 "slab_z_simention"  "X"  " Y"   "Z" 
+end structure

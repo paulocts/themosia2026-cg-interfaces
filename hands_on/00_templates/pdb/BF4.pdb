@@ -1,0 +1,7 @@
+TITLE     PAIR
+REMARK    THIS IS A SIMULATION BOX
+CRYST1   64.000   64.000   64.000  90.00  90.00  90.00 P 1           1
+MODEL        1
+ATOM      1  BF4 BF4     1      28.420  32.750  31.370  1.00  0.00            
+TER
+ENDMDL

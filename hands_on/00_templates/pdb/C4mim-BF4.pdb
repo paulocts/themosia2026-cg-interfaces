@@ -1,0 +1,11 @@
+TITLE     PAIR
+REMARK    THIS IS A SIMULATION BOX
+CRYST1   64.000   64.000   64.000  90.00  90.00  90.00 P 1           1
+MODEL        1
+ATOM      1  SI1 BIM     1      33.830  31.850  32.000  1.00  0.00            
+ATOM      2  SI2 BIM     1      31.790  33.500  30.640  1.00  0.00            
+ATOM      3  SI3 BIM     1      30.980  31.550  32.700  1.00  0.00            
+ATOM      4  SI4 BIM     1      35.980  29.780  33.770  1.00  0.00            
+ATOM      5  BF4 BF4     2      27.430  33.320  30.900  1.00  0.00            
+TER
+ENDMDL

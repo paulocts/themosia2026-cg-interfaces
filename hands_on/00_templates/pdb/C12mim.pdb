@@ -1,0 +1,12 @@
+TITLE     PAIR
+REMARK    THIS IS A SIMULATION BOX
+CRYST1   64.000   64.000   64.000  90.00  90.00  90.00 P 1           1
+MODEL        1
+ATOM      1  SI1 DIM     1      33.230  34.270  31.910  1.00  0.00            
+ATOM      2  SI2 DIM     1      31.050  35.740  30.580  1.00  0.00            
+ATOM      3  SI3 DIM     1      30.430  33.440  32.320  1.00  0.00            
+ATOM      4  SI4 DIM     1      35.410  32.200  33.680  1.00  0.00            
+ATOM      5  SI5 DIM     1      33.610  28.930  32.260  1.00  0.00            
+ATOM      6  SI6 DIM     1      33.550  24.260  32.370  1.00  0.00            
+TER
+ENDMDL

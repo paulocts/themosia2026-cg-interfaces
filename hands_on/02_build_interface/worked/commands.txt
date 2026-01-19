@@ -1,0 +1,19 @@
+
+# Example to generate a box of silica + C2mim-BF4.
+
+## Get the dimensions in XY
+tail -n silica.gro
+
+## You will see
+  10.01700   9.91426   2.00000
+
+## Edit the example of packmol input file with the information needed. Then run:
+packmol < packmol_input_C2mim-BF4-graphite.inp
+
+## Include the vaccum part and define the final simulaton box
+
+gmx editconf -f silica_C2mim-BF4.pdb -o silica_C2mim-BF4_vacuum.gro -box 10.01700 9.91426 20.00000 -noc
+
+## Reorder the gro file
+
+./reordering.sh silica_C2mim-BF4_vacuum.gro "1SI" "1EIM" "2EF4" start_silica_C2mim-BF4_vacuum.gro

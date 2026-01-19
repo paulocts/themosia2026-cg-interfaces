@@ -140,7 +140,6 @@ The `-noc` flag prevents GROMACS from recentering the components in the large bo
 
 Be sure to use the same x and y values matching those extracted from the surface file. Pay also attention that in this last step here the dimension units are in nm. 
 
----
 
 <p align="center">
   <img src="figures/simulation_boxes.png" width="750">
@@ -150,48 +149,51 @@ Be sure to use the same x and y values matching those extracted from the surface
 <em><strong>Figure 3</strong>: Two view of the simulations boxes of interface between a silica slab and [C<sub>8</sub>mim][BF<sub>4</sub>].</em>
 </p>
 
+---
 
-## Step 4 — Reorder atoms for GROMACS topology
 
-Since PACKMOL places ion pairs together, the coordinate file should be reordered to simplify topology handling. For GROMACS, reorder the `.gro` file so that atoms appear in the following order:
+## Step 4 — Reorder atoms for the GROMACS topology
 
-1. Silica slab  
-2. Cations  
-3. Anions  
+Since PACKMOL places **ion pairs together**, the coordinate file is typically not ordered in a way that is convenient for GROMACS topology handling.  
+Before running MD, we reorder the `.gro` file so that atoms appear in the following order:
 
-For the example shown here, the residue names are:
+1. **Solid slab**
+2. **Cations**
+3. **Anions**
 
-- Silica: `1SI`  
-- Cation: `1EIM`  
-- Anion: `2BF4`  
+This makes it easier to keep a clean `[ molecules ]` section in the topology and avoids confusion when checking the system.
 
-Check the contents of the ion-pair PDB files in `00_templates/` to adapt this script for other cations.
+---
 
-### Reordering procedure
+### 4.1 Residue names (silica + C2 example)
+
+For the example shown here (**silica + [C<sub>2</sub>mim][BF<sub>4</sub>]**), the residue names are:
+
+- **Silica slab:** `1SI` (matches e.g. `1SIS` and `1SIC`)
+- **Cation:** `1EIM`
+- **Anion:** `2BF4`
+
+To adapt this for other ionic liquids, check the residue names in the ion-pair PDB files located in `hands_on/00_templates/`.
+
+---
+
+### 4.2 Reordering using the script
+
+Run the reordering script as:
 
 ```bash
-title=$(head -n 1 box.gro)
-box=$(tail -n 1 box.gro)
-
-tail -n +3 box.gro | head -n -1 > atoms_only.tmp
-
-{
-  grep "^[[:space:]]*1SI" atoms_only.tmp
-  grep "^[[:space:]]*1EIM" atoms_only.tmp
-  grep "^[[:space:]]*2BF4" atoms_only.tmp
-} > atoms_reordered.tmp
-
-natoms=$(wc -l < atoms_reordered.tmp)
-
-{
-  echo "$title"
-  printf "%5d\n" "$natoms"
-  cat atoms_reordered.tmp
-  echo "$box"
-} > start.gro
-
-rm atoms_only.tmp atoms_reordered.tmp
+./reordering.sh box.gro "1SI" "1EIM" "2BF4" start.gro
 ```
+
+> **Note (graphite slabs):**  
+> In the case of graphite, each graphene layer may appear with a different residue name (e.g., `1GRA`, `2GRA`, … `5GRA`).  
+> To reorder the system correctly (solid → cations → anions), use a pattern that matches all layers at once:
+>
+> ```bash
+> ./reordering.sh box.gro "[1-5]GRA" "1EIM" "2BF4" start.gro
+> ```
+>
+> This places all graphite layers first, followed by the ionic liquid species.
 
 ---
 
@@ -200,7 +202,7 @@ rm atoms_only.tmp atoms_reordered.tmp
 With the simulation box ready, a topology file must be created. You can use text editors as `gvim` or `nano` for the task. 
 
 ```bash
-gvim topolo.top
+gvim topol.top
 ```
 
 You can now write the information below:
