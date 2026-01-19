@@ -143,7 +143,7 @@ Be sure to use the same x and y values matching those extracted from the surface
 ---
 
 <p align="center">
-  <img src="figures/simulation_boxes.png" width="900">
+  <img src="figures/simulation_boxes.png" width="750">
 </p>
 
 <p align="center">
