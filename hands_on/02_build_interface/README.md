@@ -142,6 +142,15 @@ Be sure to use the same x and y values matching those extracted from the surface
 
 ---
 
+<p align="center">
+  <img src="figures/simulation_boxes.png" width="900">
+</p>
+
+<p align="center">
+<em><strong>Figure 3</strong>: Two view of the simulations boxes of interface between a silica slab and [C<sub>8</sub>mim][BF<sub>4</sub>].</em>
+</p>
+
+
 ## Step 4 — Reorder atoms for GROMACS topology
 
 Since PACKMOL places ion pairs together, the coordinate file should be reordered to simplify topology handling. For GROMACS, reorder the `.gro` file so that atoms appear in the following order:
