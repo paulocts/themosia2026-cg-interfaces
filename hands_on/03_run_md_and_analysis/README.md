@@ -149,6 +149,49 @@ Discussion question: How far does the surface-induced ordering extend into the i
 
 ---
 
+## Optional: additional analyses with built-in GROMACS tools
+
+GROMACS includes many useful analysis tools that can be applied to solid–ionic liquid interfaces.
+To explore available options, you can always check:
+
+```bash
+gmx help
+gmx help <command>
+```
+
+Below are a few suggested analyses that go beyond density profiles.
+
+### 1) 2D diffusion parallel to the surface (MSD in xy)
+
+To estimate how ion mobility changes near interfaces, you can compute the mean-squared displacement (MSD).
+For slab systems, it is often more meaningful to compute diffusion **parallel to the surface (x/y)**:
+
+```bash
+gmx msd -f traj_comp.xtc -s md.tpr -n index.ndx -o msd_xy.xvg -lateral z
+```
+
+You can apply this to different index groups (e.g., cation, anion, head beads, tail beads).
+
+### 2) Radial distribution functions (RDF)
+
+RDFs can be used to characterize ion pairing and local structure, for example between cation head beads and anions:
+
+```bash
+gmx rdf -f traj_comp.xtc -s md.tpr -n index.ndx -o rdf.xvg
+```
+
+> Note: RDFs are easiest to interpret in bulk-like regions. In slab geometries, interfacial layering can complicate the interpretation.
+
+### 3) Energies and stability checks
+
+You can extract thermodynamic properties (temperature, potential energy, etc.) from the energy file:
+
+```bash
+gmx energy -f md.edr -o energy.xvg
+```
+
+This is useful to confirm the system is stable and properly equilibrated.
+
 ## Minimum deliverables
 
 If you reach the end of this hands-on, each group should have:
