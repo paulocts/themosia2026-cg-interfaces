@@ -10,7 +10,7 @@ All reference models, scripts, and template files are available in:
 This folder contains force-field files, molecule structures, MDP templates, and helper scripts.  
 In general, you should **not edit files inside `00_templates/`**.
 
-The same `00_templates/` folder is also available on the course computers at `/projects/themosia/CG/`
+The same `00_templates/` folder is also available on the course computers at `/projects/DAMM/themosia/CG/`
 
 ### Recommended workflow (one folder per system)
 To keep things organized, create a separate working directory for each interface you build. For instance:
@@ -25,7 +25,7 @@ Then, along the hands-on, copy the template files you need into your working fol
 For instance, to copy `C2mim-BF4.pdb`:
 
 ```bash
-cp ../00_templates/C2mim-BF4.pdb silica_C2mim-BF4/
+cp /projects/DAMM/themosia/CG/00_templates/C2mim-BF4.pdb silica_C2mim-BF4/
 cd silica_C2mim-BF4
 ```
 
@@ -69,11 +69,21 @@ software available system-wide:
 - [Python](https://www.python.org/)
 - [MDAnalysis](https://www.mdanalysis.org/)
 
-> **Note:** All tools are already installed on the course computers, except for Packmol and MDAnalysis.  
+> **Note:** Packmol and MDAnalysis are available via a dedicated Python virtual environment.
 > You may use them via a dedicated Python virtual environment. You can activate it with:
 >
 > ```bash
-> source /projects/themosia/CG/virtual_env/bin/activate
+> source /projects/DAMM/themosia/virtual_env/bin/activate
+> ```
+> 
+> **Alternative (install locally):**  
+> If you want to install Packmol and MDAnalysis on your own machine (instead of using the course virtual environment), you can create a local Python environment and install the required packages with:
+>
+> ```bash
+> python3 -m venv virtual_env
+> source virtual_env/bin/activate
+> pip install -U pip
+> pip install packmol MDAnalysis numpy matplotlib
 > ```
 
 ---
