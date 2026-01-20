@@ -107,6 +107,8 @@ If you select "a SI1 SI2" you will create a group only with two beads from the h
 
 ### Density profiles along z
 
+These species-resolved profiles quantify the structure of the **interfacial layers** (layering) formed near the solid surface.
+
 Number density profiles along the **z direction** are used to quantify layering near the surface.
 
 Example command (adjust group numbers as needed):
@@ -144,7 +146,7 @@ Discussion question: How far does the surface-induced ordering extend into the i
 </p>
 
 <p align="center">
-<em><strong>Figure 1</strong>: Examples of Partial density profiles for ionic liquids in graphite and silica surfaces.</em>
+<em><strong>Figure 1</strong>: Examples of Species-resolved number density profiles (along z) for ionic liquids in graphite and silica surfaces.</em>
 </p>
 
 ---
@@ -161,7 +163,7 @@ gmx help <command>
 
 Below are a few suggested analyses that go beyond density profiles.
 
-### 1) 2D diffusion parallel to the surface (MSD in xy)
+### 1) Diffusion coefficients from MSD (parallel to the surface)
 
 To estimate how ion mobility changes near interfaces, you can compute the mean-squared displacement (MSD).
 For slab systems, it is often more meaningful to compute diffusion **parallel to the surface (x/y)**:
