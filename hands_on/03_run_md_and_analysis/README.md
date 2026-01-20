@@ -10,9 +10,13 @@ The central question is:
 
 ---
 
-## Simulation protocol (GROMACS)
+## Simulation protocol with GROMACS
 
-We use a simple and consistent protocol for all systems:
+GROMACS is a popular open-source software package used for molecular dynamics (MD) simulations.  
+It is especially well known for studying biomolecular systems (proteins, lipids, membranes), but it is also widely used in soft matter and materials simulations, including **solid–liquid interfaces**.  
+GROMACS is valued for being highly efficient on both CPUs and GPUs, and for providing many built-in tools for trajectory analysis.
+
+We use a simple and consistent protocol for all systems here:
 
 1. **Energy minimization**
 2. **Short equilibration** (NVT, 10 fs time step)
@@ -22,16 +26,21 @@ Because the interface setup includes a **vacuum region along z**, we use **NVT s
 
 Position restraints are applied to the solid during minimization and equilibration (silica; and also graphite when applicable).
 
-### Notes (Martini + slab interfaces)
+> **Note on the connection to the atomistic hands-on:**  
+> In the atomistic hands-on, simulations were run using **OpenMM** (Python-based workflows).  
+> Here, we switch to **GROMACS**, which uses a command-line workflow based on `.mdp` parameter files and the `gmx grompp` → `gmx mdrun` sequence.
 
-- All the parameters selected for the MD simulations are described in the mdp file for GROMACS code. You can find examples in the `00_templates/` directory.  Additional information are described [here](https://manual.gromacs.org/current/user-guide/mdp-options.html).
-- Martini models typically allow **larger time steps** than atomistic MD (10–20 fs is common). This part of the reasons why CG models are faster than atomistic ones.
-- The **Berendsen thermostat** is used only for equilibration. It is typically more robust in initial stages of the relaxation of the system.
-- The **v-rescale thermostat** is used for production to ensure correct ensemble sampling concerning the velocities distributions.
+### Practical notes (Martini + interfaces)
+
+- All the parameters selected for the MD simulations are defined in the GROMACS `.mdp` files. You can find examples in the `00_templates/` directory. Additional information is available [here](https://manual.gromacs.org/current/user-guide/mdp-options.html).
+- Martini models typically allow **larger time steps** than atomistic MD (10–20 fs is common). This is one of the reasons why CG models are faster than atomistic ones.
+- The **Berendsen thermostat** is used only for equilibration. It is typically more robust during the initial relaxation of the system.
+- The **v-rescale thermostat** is used for production to ensure correct ensemble sampling of the velocity distribution.
 - Periodic boundary conditions are applied in **x and y**.
-- The vacuum region along **z** prevents interactions with the other side of the solid surface, which can otherwise over-induce ordering of the liquid.
+- The vacuum region along **z** prevents interactions with the periodic image on the other side of the slab, which can otherwise over-induce ordering of the liquid.
 
 ---
+
 
 ## Running the simulations
 
