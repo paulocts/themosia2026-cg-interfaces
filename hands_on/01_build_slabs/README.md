@@ -296,9 +296,8 @@ The reported *x* and *y* values will be reused when redefining the box height.
 
 ---
 
----
 
-## 5.2 Adding position restraints to the graphene topology (`GRA`)
+## 5.2 Adding position restraints to the graphene topology
 
 The graphene builder generates a topology file (`graphene.itp`) but did not have the option to include position restrains. So we will add in an alternative way, using one of the GROMACS tools: 
 
@@ -322,6 +321,7 @@ Add the following lines at the very bottom of `graphene.itp`:
 #include "posre_GRA.itp"
 #endif
 ```
+---
 
 ## 5.3 Defining the interlayer spacing
 
@@ -366,7 +366,7 @@ A graphitic slab is constructed by stacking multiple graphene layers along the *
 Stack 5 layers:
 
 ```bash
-gmx genconf -f graphene_1layer.gro -o graphite.gro -nbox 1 1 5
+gmx genconf -f graphene_1layer.gro -o graphite.pdb -nbox 1 1 5
 ```
 
 This produces a five-layer graphite slab with a total thickness of:
