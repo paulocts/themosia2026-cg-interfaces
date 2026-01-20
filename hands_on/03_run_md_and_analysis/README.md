@@ -141,7 +141,7 @@ The plots can be visualized using `xmgrace -nxy density.xvg`. During the course 
 
 ---
 
-## Going further (suggested variations)
+## Going further
 
 Once you have a stable workflow for minimization, equilibration, production, and density profiles, you are encouraged to go beyond the default example and test variations such as:
 
