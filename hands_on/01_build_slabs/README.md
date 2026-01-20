@@ -296,7 +296,34 @@ The reported *x* and *y* values will be reused when redefining the box height.
 
 ---
 
-## 5.2 Defining the interlayer spacing
+---
+
+## 5.2 Adding position restraints to the graphene topology (`GRA`)
+
+The graphene builder generates a topology file (`graphene.itp`) but did not have the option to include position restrains. So we will add in an alternative way, using one of the GROMACS tools: 
+
+### Generate a position restraint file (single layer)
+
+Use the graphene.gro structure produced in Step 5.1:
+
+```bash
+gmx genrestr -f graphene.gro -o posre_GRA.itp -fc 1000 1000 1000
+```
+
+When prompted, select the group containing the graphene beads (often the only available group).
+
+### Include the restraint file in `graphene.itp`
+
+Add the following lines at the very bottom of `graphene.itp`:
+
+```
+; ---- Position restraints for graphene (GRA) ----
+#ifdef POSRES
+#include "posre_GRA.itp"
+#endif
+```
+
+## 5.3 Defining the interlayer spacing
 
 The graphene builder ensures correct lateral periodicity in **x** and **y**, but the box height (**z**) must be defined manually before stacking layers.
 
@@ -332,7 +359,7 @@ gmx editconf -f graphene.gro -box X Y 0.382 -o graphene_1layer.gro
 
 ---
 
-## 5.3 Stacking graphene layers to obtain graphite
+## 5.4 Stacking graphene layers to obtain graphite
 
 A graphitic slab is constructed by stacking multiple graphene layers along the **z direction**. In this course, we use **five layers**, which is sufficient to represent a graphite substrate at the coarse-grained level.
 
