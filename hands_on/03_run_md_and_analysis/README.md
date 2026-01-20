@@ -151,6 +151,19 @@ Discussion question: How far does the surface-induced ordering extend into the i
 
 ---
 
+## Going further (suggested variations)
+
+Once you have a stable workflow for minimization, equilibration, production, and density profiles, you are encouraged to go beyond the default example and test variations such as:
+
+- different ionic liquids (e.g., [C<sub>2</sub>mim][BF<sub>4</sub>], [C<sub>4</sub>mim][BF<sub>4</sub>], [C<sub>8</sub>mim][BF<sub>4</sub>], [C<sub>12</sub>mim][BF<sub>4</sub>])
+- comparing different IL families (e.g., **imidazolium vs phosphonium**)
+- different solid substrates (**silica vs graphite**)
+- modified surfaces from Hands-on 01 (e.g., bead types, surface density, surface charge)
+
+These comparisons are the main goal of the coarse-grained hands-on: to evaluate how the surface chemistry and structure can induce (or suppress) **interfacial layering and organization** of ionic liquids.
+
+---
+
 ## Optional: additional analyses with built-in GROMACS tools
 
 GROMACS includes many useful analysis tools that can be applied to solid–ionic liquid interfaces.
