@@ -12,9 +12,7 @@ The central question is:
 
 ## Simulation protocol with GROMACS
 
-GROMACS is a popular open-source software package used for molecular dynamics (MD) simulations.  
-It is especially well known for studying biomolecular systems (proteins, lipids, membranes), but it is also widely used in soft matter and materials simulations, including **solid–liquid interfaces**.  
-GROMACS is valued for being highly efficient on both CPUs and GPUs, and for providing many built-in tools for trajectory analysis.
+GROMACS is a popular open-source software package used for molecular dynamics (MD) simulations.   It is especially well known for studying biomolecular systems (proteins, lipids, membranes), but it is also widely used in soft matter and materials simulations, including **solid–liquid interfaces**. GROMACS is valued for being highly efficient on both CPUs and GPUs, and for providing many built-in tools for trajectory analysis.
 
 We use a simple and consistent protocol for all systems here:
 
