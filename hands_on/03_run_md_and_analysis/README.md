@@ -139,6 +139,14 @@ The plots can be visualized using `xmgrace -nxy density.xvg`. During the course 
 
 Discussion question: How far does the surface-induced ordering extend into the ionic liquid, and how does it depend on the system?
 
+<p align="center">
+  <img src="figures/density.png" width="750">
+</p>
+
+<p align="center">
+<em><strong>Figure 1</strong>: Examples of Partial density profiles for ionic liquids in graphite and silica surfaces.</em>
+</p>
+
 ---
 
 ## Minimum deliverables
