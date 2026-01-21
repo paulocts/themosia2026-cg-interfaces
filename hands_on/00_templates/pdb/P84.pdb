@@ -1,0 +1,12 @@
+TITLE     IL Box
+REMARK    THIS IS A SIMULATION BOX
+CRYST1  100.000  100.000  112.905  90.00  90.00  90.00 P 1           1
+MODEL        1
+ATOM      1  P1  PHO     1      35.430  40.220  79.420  1.00  0.00            
+ATOM      2  C2  PHO     1      33.020  39.250  81.760  1.00  0.00            
+ATOM      3  C3  PHO     1      38.850  38.960  79.760  1.00  0.00            
+ATOM      4  C4  PHO     1      33.850  39.970  76.200  1.00  0.00            
+ATOM      5  C5  PHO     1      35.920  43.660  79.620  1.00  0.00            
+ATOM      6  C6  PHO     1      37.440  46.990  77.170  1.00  0.00            
+TER
+ENDMDL

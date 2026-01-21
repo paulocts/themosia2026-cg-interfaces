@@ -77,9 +77,11 @@ The slab model used in this tutorial has the following features:
 In this hands-on, we generate a **reference silica slab** that closely follows the original model used in Cambiaso et al Surf. Interfaces. (2025). Copy build_silica_slab.py from 00_templates/. You can first run
 
 ```bash
+cd 01_build_slabs
+cp ../00_templates/scripts-inputs/build_silica_slab.py .
 python3 build_silica_slab.py -h
 ```
-To see the options of the code avaiable. But to start with an eansy example, let's run:
+To see the options of the code avaiable. But to start with an easy example, let's run:
 
 ```bash
 python3 build_silica_slab.py \
@@ -99,7 +101,7 @@ python3 build_silica_slab.py \
   Gives the dimensions of the box in nm. Considering a 10 × 10 × 2 nm silica slab, this setup produces 2520 beads distributed over 5 planes. If one loosely associates each bead with a silicon-centered unit, this corresponds to roughly 7560 non-hydrogen atoms, i.e. an effective mapping of about three non-hydrogen atoms per bead (roughly SiO₂). However, this correspondence should not be interpreted as a strict atom-to-bead mapping: in this model, beads represent effective interaction sites chosen to reproduce macroscopic interfacial behavior, rather than chemically explicit Si and O atoms.
 
 - `-core N2` / `-surface N5`  
-  Assign different Martini bead types to the slab interior and the surface to represent effective surface chemistry. In the Martini model, bead types encode effective polarity and solvent affinity, rather than explicit chemical groups. Martini 3 organizes beads into broad chemical classes, such as C (apolar), N (intermediately polar), and P (polar), spanning a continuous range of interaction strengths More details are avaiable here [Marrink, et al. WIREs Comput Mol Sci (2023)](https://doi.org/10.1002/wcms.1620). For silica surfaces, N5 beads can be used to represent highly hydrophilic environments, corresponding to surfaces rich in hydroxyl (–OH) groups at the atomistic level, while N2 beads represent less polar, more weakly interacting silica environments and are therefore considered a reasonable choice for the slab core.
+  Assigns different Martini bead types to the slab interior and the surface to represent effective surface chemistry. In the Martini model, bead types encode effective polarity and solvent affinity, rather than explicit chemical groups. Martini 3 organizes beads into broad chemical classes, such as C (apolar), N (intermediately polar), and P (polar), spanning a continuous range of interaction strengths More details are avaiable here [Marrink, et al. WIREs Comput Mol Sci (2023)](https://doi.org/10.1002/wcms.1620). For silica surfaces, N5 beads can be used to represent highly hydrophilic environments, corresponding to surfaces rich in hydroxyl (–OH) groups at the atomistic level, while N2 beads represent less polar, more weakly interacting silica environments and are therefore considered a reasonable choice for the slab core.
 
   <p align="center">
   <img src="figures/Martini3_beads.png" width="900">
@@ -110,13 +112,13 @@ python3 build_silica_slab.py \
 </p>
 
 - `-bonds -ef 10000 -rcut 0.65`  
-  Create a stiff bonded network between neighboring beads (within 6.5 Å), ensuring that the slab behaves as a solid. In principle, the force constant could be tuned to reproduce specific mechanical properties of the material. Here, however, it is used simply to keep the surface reasonably rigid and numerically stable under the chosen simulation conditions
+  Creates stiff bonded network between neighboring beads (within 6.5 Å), ensuring that the slab behaves as a solid. In principle, the force constant could be tuned to reproduce specific mechanical properties of the material. Here, however, it is used simply to keep the surface reasonably rigid and numerically stable under the chosen simulation conditions
 
 - `-pbc_bonds xy`  
-  Apply periodic bonding only in the lateral directions, which is safe for slab geometries.
+  Applies periodic bonding only in the lateral directions, which is safe for slab geometries.
 
 - `-pr 10000`  
-  Add **position restraints** to all slab beads (10 000 kJ mol⁻¹ nm⁻²).  
+  Adds **position restraints** to all slab beads (10 000 kJ mol⁻¹ nm⁻²).  
   These restraints are intended **only for energy minimization and equilibration** and are activated by defining `POSRES` in the GROMACS `.mdp` file. Alternatively, you could use position restraints along the production simulations, but without the adding a bonded network.
 
 ---
@@ -134,7 +136,8 @@ The builder produces three files:
 - **silica.itp**  
   Topology file defining bead types, bonds, masses, charges, and optional position restraints
 
-You can see a representation of this first silica slab in Figure 2. These files will be reused in later hands-ons to assemble solid–ionic liquid systems.
+These files will be reused in later hands-ons to assemble solid–ionic liquid systems.
+You can see a representation of this first silica slab in Figure 2. 
 
 <p align="center">
   <img src="figures/silica.png" width="650">
@@ -155,9 +158,9 @@ The examples below illustrate simple and physically motivated modifications that
 
 A first and intuitive modification is to change the **surface bead type**, which controls the effective chemistry experienced by the liquid.
 
-#### Example: hydrophobized silica surface
+#### Example 1: hydrophobized silica surface
 
-Experimentally, silica surfaces are often hydrophobized by trimethylsilylation, replacing surface silanol groups with –Si(CH₃)₃ moieties. By inspecting the Supporting Information of the Martini 3 paper ([Souza et al., Nat. Methods (2025)](https://doi.org/10.1038/s41592-021-01098-3); in particular Supplementary Table 24), one can consider that, at the coarse-grained level, this modification can be mimicked by assigning a **nonpolar C bead type* to the surface, such as C2. This can be achieved by adding the corresponding flag to the builder:
+Experimentally, silica surfaces are often hydrophobized by trimethylsilylation, replacing surface silanol groups with –Si(CH₃)₃ moieties. By inspecting the Supporting Information of the Martini 3 paper ([Souza et al., Nat. Methods (2021)](https://doi.org/10.1038/s41592-021-01098-3); in particular Supplementary Table 24), one can consider that, at the coarse-grained level, this modification can be mimicked by assigning a **nonpolar C bead type* to the surface, such as C2. This can be achieved by adding the corresponding flag to the builder:
 
 ```bash
 -surface C2
@@ -172,6 +175,8 @@ This represents a hydrophobic surface and is expected to impact the interactions
 Bead spacing controls the **effective surface density and roughness** experienced by the liquid at the interface.
 
 By default, the bead spacing used in the silica slab builder corresponds to the values employed by Cambiaso et al. Surf. Interfaces. (2025), which were shown to reproduce macroscopic interfacial properties such as wetting behavior.
+
+#### Example 2: Si-Si distances reflecting crystalline silica
 
 An alternative modeling choice is to construct a surface whose bead spacing reflects typical **Si–Si distances** in crystalline silica. This can be compared directly with the crystal structures used in the atomistic MD hands-on from the previous day. A representative estimate for this spacing is approximately **0.292 nm**.
 
@@ -191,7 +196,7 @@ From a coarse-graining perspective, changing the bead spacing can also be relate
 
 Surface charge is introduced in an **effective, coarse-grained manner**, representing the average charge state of surface functional groups.
 
-#### Example: amino-functionalized silica surface
+#### Example 3: amino-functionalized silica surface
 
 Assuming pH ≈ pKₐ and partial protonation of amine groups, a reasonable CG approximation is to assign a **partial positive charge** to surface beads.
 
@@ -217,7 +222,7 @@ You can define:
 
 If the fraction is not specified, the code defaults to an **equal (50/50) distribution**.
 
-#### Example: 30% amino-functionalized patches on the top surface
+#### Example 4: 30% amino-functionalized patches on the top surface
 
 ```bash
 -top2 Q4p -qtop2 +1.0 -ftop2 0.30

@@ -108,7 +108,7 @@ structure silica.pdb
   fixed 0.0 0.0 0.0   0.0 0.0 0.0
 end structure
 
-structure C2imin-BF4.pdb
+structure C2mim-BF4.pdb
   number 5000
   inside box 0.0 0.0 23.0   100.1700 99.1426 170.0
 end structure
@@ -165,7 +165,7 @@ This makes it easier to keep a clean `[ molecules ]` section in the topology and
 
 ---
 
-### 4.1 Residue names (silica + C2 example)
+### 4.1 Residue names (silica + [C<sub>2</sub>mim][BF<sub>4</sub>] example)
 
 For the example shown here (**silica + [C<sub>2</sub>mim][BF<sub>4</sub>]**), the residue names are:
 
@@ -209,12 +209,12 @@ You can now write the information below:
 
 ```text
 #include "martini_v3.0.itp"
-#include "cation_C2imin.itp"
+#include "cation_C2mim.itp"
 #include "anion.itp"
 #include "silica.itp"
 
 [ system ]
-Interface silica C2imin-BF4
+Interface silica C2mim-BF4
 
 [ molecules ]
 SILICA_SLAB 1
