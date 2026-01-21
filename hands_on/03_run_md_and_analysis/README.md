@@ -111,7 +111,7 @@ You can see some residue names pre-defined based on the information in the gro f
 If you select "a SI1 SI2" you will create a group only with two beads from the head of the imidazolium ion. Selection "a SI3 ... SIn" should now indicate a group only with the tails.
 
 <p align="center">
-  <img src="figures/index.png" width="750">
+  <img src="figures/index.png" width="400">
 </p>
 
 <p align="center">
@@ -170,13 +170,6 @@ These comparisons are the main goal of the coarse-grained hands-on: to evaluate 
 
 Discussion question: How far does the surface-induced ordering extend into the ionic liquid, and how does it depend on the system?
 
-<p align="center">
-  <img src="figures/density.png" width="750">
-</p>
-
-<p align="center">
-<em><strong>Figure 1</strong>: Examples of Species-resolved number density profiles (along z) for ionic liquids in graphite and silica surfaces.</em>
-</p>
 
 ---
 
