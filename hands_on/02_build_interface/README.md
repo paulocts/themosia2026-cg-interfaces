@@ -210,7 +210,7 @@ You can now write the information below:
 ```text
 #include "martini_v3.0.itp"
 #include "cation_C2mim.itp"
-#include "anion.itp"
+#include "BF4.itp"
 #include "silica.itp"
 
 [ system ]
