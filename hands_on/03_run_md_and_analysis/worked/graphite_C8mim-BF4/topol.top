@@ -1,0 +1,12 @@
+#include "martini_v3.0.itp"
+#include "cation_C8mim.itp"
+#include "BF4.itp"
+#include "graphene.itp"
+
+[ system ]
+Interface graphite C8mim-BF4
+
+[ molecules ]
+GRA      5
+OIM   3500
+BF4   3500

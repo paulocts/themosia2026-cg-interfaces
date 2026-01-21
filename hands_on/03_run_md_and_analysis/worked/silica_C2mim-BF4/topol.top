@@ -1,0 +1,12 @@
+#include "martini_v3.0.itp"
+#include "cation_C2mim.itp"
+#include "BF4.itp"
+#include "silica.itp"
+
+[ system ]
+Interface silica C2mim-BF4
+
+[ molecules ]
+SILICA_SLAB 1
+EIM   5000
+BF4   5000

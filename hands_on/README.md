@@ -18,15 +18,15 @@ To keep things organized, create a separate working directory for each interface
 ```bash
 mkdir -p work
 cd work
-mkdir silica_C2imim-BF4
+mkdir silica_C2mim-BF4
 ```
 
 Then, along the hands-on, copy the template files you need into your working folder.  
-For instance, to copy `C2imim-BF4.pdb`:
+For instance, to copy `C2mim-BF4.pdb`:
 
 ```bash
-cp /projects/DAMM/themosia/CG/00_templates/C2imim-BF4.pdb silica_C2imim-BF4/
-cd silica_C2imim-BF4
+cp /projects/DAMM/themosia/CG/00_templates/C2mim-BF4.pdb silica_C2mim-BF4/
+cd silica_C2mim-BF4
 ```
 
 > If you are not familiar with Linux commands (`cd`, `ls`, `cp`, `mkdir`), please ask the instructors for help.
