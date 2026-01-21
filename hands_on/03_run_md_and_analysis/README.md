@@ -155,6 +155,14 @@ Notes:
 
 The plots can be visualized using `xmgrace -nxy density.xvg`. During the course we can discuss how figures can be generated. If you know other plotting options, feel free to use them.
 
+<p align="center">
+  <img src="figures/density.png" width="750">
+</p>
+
+<p align="center">
+<em><strong>Figure 2</strong>: Examples of Species-resolved number density profiles (along z) for ionic liquids in graphite and silica surfaces.</em>
+</p>
+
 ---
 
 ## Going further
@@ -166,7 +174,7 @@ Once you have a stable workflow for minimization, equilibration, production, and
 - different solid substrates (**silica vs graphite**)
 - modified surfaces from Hands-on 01 (e.g., bead types, surface density, surface charge)
 
-These comparisons are the main goal of the coarse-grained hands-on: to evaluate how the surface chemistry and structure can induce (or suppress) **interfacial layering and organization** of ionic liquids.
+These comparisons are the main goal of the coarse-grained module: to evaluate how the surface chemistry and structure can induce (or suppress) **interfacial layering and organization** of ionic liquids.
 
 Discussion question: How far does the surface-induced ordering extend into the ionic liquid, and how does it depend on the system?
 
