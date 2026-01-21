@@ -110,6 +110,15 @@ You can see some residue names pre-defined based on the information in the gro f
 
 If you select "a SI1 SI2" you will create a group only with two beads from the head of the imidazolium ion. Selection "a SI3 ... SIn" should now indicate a group only with the tails.
 
+<p align="center">
+  <img src="figures/index.png" width="750">
+</p>
+
+<p align="center">
+<em><strong>Figure 1</strong>: Bead names for the imidazolium cations.</em>
+</p>
+
+
 ---
 
 ### Density profiles along z
