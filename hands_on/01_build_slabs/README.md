@@ -186,7 +186,7 @@ The bead spacing can be modified using the `-a` flag in the slab builder:
 -a 0.292
 ```
 
-When reducing the bead spacing, it is recommended to also adjust the bonding cutoff to avoid creating an excessively connected network. For example, the cutoff distance can be reduced to -rcut 0.53
+When reducing the bead spacing, it is recommended to also adjust the bonding cutoff to avoid creating an excessively connected network. For example, the cutoff distance can be reduced to `-rcut 0.53`
 
 From a coarse-graining perspective, changing the bead spacing can also be related to changing the effective mapping resolution of the surface. In Martini 3, different bead sizes (tiny, small, regular) are associated with different levels of resolution, roughly corresponding to 2-to-1, 3-to-1, and 4-to-1 mappings, respectively. For silica, a 3-to-1–like resolution could alternatively be explored by using small neutral beads, for example via -core SN2 and -surface SN5. While this choice may yield more accurate solvent–surface distances, for the phenomenological approach adopted here for silica it is not expected to lead to a substantial gain in accuracy, and would mainly increase the computational cost.
 
