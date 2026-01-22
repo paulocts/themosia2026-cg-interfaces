@@ -10,7 +10,7 @@ All reference models, scripts, and template files are available in:
 This folder contains force-field files, molecule structures, MDP templates, and helper scripts.  
 In general, you should **not edit files inside `00_templates/`**.
 
-The same `00_templates/` folder is also available on the course computers at `/projects/DAMM/themosia/CG/`
+The same `00_templates/` folder is also available on the course computers at `/projects/LaboratoireChimie/CG/`
 
 ### Recommended workflow (one folder per system)
 To keep things organized, create a separate working directory for each interface you build. For instance:
@@ -73,7 +73,7 @@ software available system-wide:
 > You may use them via a dedicated Python virtual environment. You can activate it with:
 >
 > ```bash
-> source /projects/DAMM/themosia/virtual_env/bin/activate
+> source /projects/LaboratoireChimie/CG/virtual_env/bin/activate
 > ```
 > 
 > **Alternative (install locally):**  
