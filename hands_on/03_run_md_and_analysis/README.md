@@ -47,7 +47,7 @@ With all the files ready from the previous hands on, now is time to run the simu
 
 **Note on common options:**
 - `-nt` sets the number of CPU threads used by `mdrun`.
-- `-deffnm` sets the default filename prefix for all output files (e.g., `traj_comp.xtc`, `md.edr`, `md.log`).
+- `-deffnm` sets the default filename prefix for all output files (e.g., `md.xtc`, `md.edr`, `md.log`).
 
 
 ### 1) Energy minimization
@@ -82,10 +82,10 @@ These checks are fast and help confirm the setup is correct before analysis:
   - For both steps, the code gmx energy -f file_name.edr can be used to see how properties like temperature and potential energy are evolving with time.
 - **During production:** the trajectory runs without crashes and the interface remains stable.
 
-A simple visual inspection in VMD of `eq.gro` + `traj_comp.xtc` is usually sufficient. 
+A simple visual inspection in VMD of `eq.gro` + `md.xtc` is usually sufficient. 
 
 ```bash
-vmd eq.gro traj_comp.xtc
+vmd eq.gro md.xtc
 ```
 
 Some options to better present the molecules in the CG resolution and render figures will be discussed during the school.
@@ -132,7 +132,7 @@ Example command (adjust group numbers as needed):
 ```bash
 gmx density \
   -s md.tpr \
-  -f traj_comp.xtc \
+  -f md.xtc \
   -n index.ndx \
   -ng 5 \
   -center \
@@ -199,7 +199,7 @@ To estimate how ion mobility changes near interfaces, you can compute the mean-s
 For slab systems, it is often more meaningful to compute diffusion **parallel to the surface (x/y)**:
 
 ```bash
-gmx msd -f traj_comp.xtc -s md.tpr -n index.ndx -o msd_xy.xvg -lateral z
+gmx msd -f md.xtc -s md.tpr -n index.ndx -o msd_xy.xvg -lateral z
 ```
 
 You can apply this to different index groups (e.g., cation, anion, head beads, tail beads).
@@ -209,7 +209,7 @@ You can apply this to different index groups (e.g., cation, anion, head beads, t
 RDFs can be used to characterize ion pairing and local structure, for example between cation head beads and anions:
 
 ```bash
-gmx rdf -f traj_comp.xtc -s md.tpr -n index.ndx -o rdf.xvg
+gmx rdf -f md.xtc -s md.tpr -n index.ndx -o rdf.xvg
 ```
 
 > Note: RDFs are easiest to interpret in bulk-like regions. In slab geometries, interfacial layering can complicate the interpretation.
@@ -228,7 +228,7 @@ This is useful to confirm the system is stable and properly equilibrated.
 
 If you reach the end of this hands-on, each group should have:
 
-- A short production trajectory (`traj_comp.xtc`, `md.gro`) for at least four systems: [C<sub>2</sub>mim][BF<sub>4</sub>] and [C<sub>8</sub>mim][BF<sub>4</sub>] IL in two different surfaces
+- A short production trajectory (`md.xtc`, `md.gro`) for at least four systems: [C<sub>2</sub>mim][BF<sub>4</sub>] and [C<sub>8</sub>mim][BF<sub>4</sub>] IL in two different surfaces
 - Density profiles along z for:
   - Solid reference
   - Cation head beads
